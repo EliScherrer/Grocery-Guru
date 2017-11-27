@@ -14,9 +14,28 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
+//page routes
+//index
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/index.html'));
 });
+
+//login
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/login.html'));
+});
+
+//view a list - TODO figure out how to handle query string so that ?list="unique id" brings up the appropriate list
+app.get('/grocerylist', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/listView.html'));
+});
+
+//browse recipes
+app.get('/recipes', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/browseRecipes.html'));
+});
+
+
 
 
 var server = app.listen(port, function() {
