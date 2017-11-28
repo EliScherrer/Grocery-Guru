@@ -3,6 +3,7 @@ require('./config/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 var path = require('path');
+const _ = require('lodash');
 
 const { mongoose, mongoUrl } = require('./database/mongoose');
 // const { ObjectID } = require('mongodb');
@@ -42,7 +43,6 @@ app.get('/recipes', function(req, res) {
 
 var server = app.listen(port, function() {
 	console.log(`Grocery Guru listening on port ${port}`);
-	console.log(`Mongo started on port: ${mongoUrl}`);
 });
 
 module.exports = app;
