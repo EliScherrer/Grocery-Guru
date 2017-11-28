@@ -1,7 +1,7 @@
 
 
 			body {
-				background: rgb(113, 213, 243);
+				background-color: #2bb3bd;
 			}
 
 /*styles for divs*/
@@ -11,7 +11,8 @@
 				top: 10px;
 				height: 250px;
 				width: 650px;
-				border: 1px solid black;
+                border: 1px solid rgb(253, 252, 252);
+                background-color: rgb(20, 78, 236);
 			}
 			
 	
@@ -24,23 +25,24 @@
 				top: 0px;
 				font-size: 24px;
 				font-family: sans-serif;
-				font-weight: bold;
+                font-weight: bold;
+                color:#fdfdfd;
 			}
 
 
 			#btnRecipes {
-				position: absolute;
-				left: 500px;
-				top: 2px;
-				width: 100px;
-				height: 30px;
+                position: absolute;
+                left: 500px;
+				top: 50px;
+                width: 100px;
+                height: 30px;
 				font-size: 18px;
-				font-family: sans-serif;
-				font-weight: bold;
-				color: rgb(2, 2, 2);
-				border-radius: 0px;
-				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-				background: rgb(32, 102, 207);
+                background: #000000;
+                border: 1px solid #e5a900;
+                color: #FFFFFF;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 5px;
             }
             
             #btnList1 {
