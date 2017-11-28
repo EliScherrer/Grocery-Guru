@@ -1,0 +1,23 @@
+body {
+	background-color: #008000;
+}
+h1{
+background-color: #32CD32;
+padding: 30px 35px;
+margin: auto;
+text-align:left;
+}
+div.left{
+background-color: #32CD32;
+width: auto;
+padding: 10px 50px 25px;
+text-align:left;
+float:left
+}
+div.right{
+background-color: #32CD32;
+width: auto;
+padding: 10px 50px 25px;
+text-align:right;
+float:right;
+}
