@@ -10,24 +10,11 @@
 				left: 50px;
 				top: 10px;
 				height: 250px;
-				width: 750px;
+				width: 650px;
 				border: 1px solid black;
 			}
-			#divMidSection {
-				position: absolute;
-				left: 50px;
-				top: 270px;
-				height: 30px;
-				width: 750px;
-			}
-			#divEntrylog {
-				position: absolute;
-				left: 50px;
-				top: 300px;
-				height: 300px;
-				width: 750px;
-				border: 1px solid black;
-			}
+			
+	
 
 
 /*styles for divEntryAdd*/
@@ -43,7 +30,7 @@
 
 			#btnRecipes {
 				position: absolute;
-				left: 630px;
+				left: 500px;
 				top: 2px;
 				width: 100px;
 				height: 30px;
@@ -54,4 +41,48 @@
 				border-radius: 4px;
 				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 				background: rgb(28, 184, 176);
-			}
+            }
+            
+            #btnList1 {
+				position: absolute;
+				left: 10px;
+				top: 50px;
+				width: 100px;
+				height: 30px;
+				font-size: 18px;
+				font-family: sans-serif;
+				font-weight: bold;
+				color: white;
+				border-radius: 4px;
+				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+				background: rgb(28, 184, 176);
+            }
+            #btnList2 {
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				width: 100px;
+				height: 30px;
+				font-size: 18px;
+				font-family: sans-serif;
+				font-weight: bold;
+				color: white;
+				border-radius: 4px;
+				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+				background: rgb(28, 184, 176);
+            }
+            #btnList3 {
+				position: absolute;
+				left: 10px;
+				top: 150px;
+				width: 100px;
+				height: 30px;
+				font-size: 18px;
+				font-family: sans-serif;
+				font-weight: bold;
+				color: white;
+				border-radius: 4px;
+				text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+				background: rgb(28, 184, 176);
+            }
+            
