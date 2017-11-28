@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 var path = require('path');
 const _ = require('lodash');
 
+const { User } = require('./models/user');
 const { mongoose, mongoUrl } = require('./database/mongoose');
-// const { ObjectID } = require('mongodb');
+const { ObjectID } = require('mongodb');
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -38,6 +39,33 @@ app.get('/recipes', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/browseRecipes.html'));
 });
 
+
+
+//user api routes
+//create account
+app.post('/users/create', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password']);
+	var user = new User(body);
+
+	user.save()
+		.then(() => {
+			res.status(200).sendFile(path.join(__dirname + '/../public/index.html'));
+		}).catch((err) => {
+			res.status(400).send(err);
+		});
+});
+
+//login
+app.post('/users/login', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password']);
+
+	User.findByCredentials(body.username, body.password)
+		.then((user) => {
+			res.status(200).sendFile(path.join(__dirname + '/../public/index.html'));
+		}).catch((err) => {
+			res.status(400).send(err);
+		});
+});
 
 
 

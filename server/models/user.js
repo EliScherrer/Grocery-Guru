@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-const jwt = require('jsonwebtoken');
 const _ = require('lodash');
-const bcrypt = require('bcryptjs');
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -11,20 +8,32 @@ var UserSchema = new mongoose.Schema({
     trim: true,
     minlength: 1,
     unique: true,
-    validate: {
-			validator: (value) => {
-				return validator.isEmail(value);
-			},
-			message: `{VALUE} is not a valid email`
-    }
   },
   password: {
     type: String,
     require: true,
-    minlength: 6
-  },
+    minlength: 1,
+  }
 });
 
+UserSchema.statics.findByCredentials = function (username, password) {
+	var User = this;
+
+	return User.findOne({username}).then((user) => {
+		if (!user) {
+			return Promise.reject();
+		}
+
+		return new Promise((resolve, reject) => {
+			if (password === user.password) {
+				resolve(user);
+			}
+			else {
+				reject();
+			}
+		});
+	});
+};
 
 
 
