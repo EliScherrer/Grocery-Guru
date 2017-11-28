@@ -1,21 +1,21 @@
 body {
-	background-color: #008000;
+	background-color: #2bb3bd;
 }
 h1{
-	background-color: #32CD32;
+	background-color: rgb(20, 78, 236);
 	padding: 30px 35px;
 	margin: auto;
 	text-align:left;
 }
 div.left{
-	background-color: #32CD32;
+	background-color: rgb(20, 78, 236);
 	width: 25%;
 	margin: 10px auto;
 	text-align:center;
 	float:left
 }
 div.right{
-	background-color: #32CD32;
+	background-color: rgb(20, 78, 236);
 	width: 25%;
 	margin: 10px auto;
 	text-align:center;
@@ -24,9 +24,8 @@ div.right{
 
 #ingredients {
 	clear: both;
-	margin-top: 100px;
-	border-collapse: collapse;
 	width: 100%;
+	padding: 25px;
 }
 
 #ingredients td, #ingredients th {
@@ -42,6 +41,29 @@ div.right{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: rgb(20, 78, 236);
+    color: white;
+}
+
+#completed_ingredients {
+	clear: both;
+	width: 100%;
+	padding: 25px;
+}
+
+#completed_ingredients td, #completed_ingredients th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#completed_ingredients tr:hover {
+	background-color: #ddd;
+}
+
+#completed_ingredients th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(20, 78, 236);
     color: white;
 }
