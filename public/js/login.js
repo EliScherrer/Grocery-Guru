@@ -24,14 +24,11 @@ function validate() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-		var myHeaders = new Headers();
+		var props = { method: 'POST',
+		               mode: 'cors'
+								};
 
-		var props = { method: 'GET',
-		               headers: myHeaders,
-		               mode: 'cors',
-		               cache: 'default' };
-
-		fetch('flowers.jpg', myInit).then(function(response) {
+		fetch(process.env.BASE_URL + '/users/login', props).then(function(response) {
 		  return response.blob();
 		}).then(function(myBlob) {
 		  var objectURL = URL.createObjectURL(myBlob);
