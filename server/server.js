@@ -46,6 +46,20 @@ app.get('/recipes', function(req, res) {
 //create account
 app.post('/users/create', (req, res) => {
 	var body = _.pick(req.body, ['username', 'password']);
+	//add default friends
+	body.friends = [
+		"user1",
+		"user2",
+		"user3",
+		"user4",
+		"user5"
+	]
+	//add default lists
+	body.lists = [
+		"defaultList1",
+		"defaultList2",
+	]
+
 	var user = new User(body);
 
 	user.save()
@@ -73,6 +87,33 @@ app.post('/users/login', (req, res) => {
 		});
 });
 
+//get user friends
+app.get('/users/friends', (req, res) => {
+	var username = localStorage.getItem('user');
+	var password = localStorage.getItem('pass');
+
+	User.findByCredentials(username, password)
+		.then((user) => {
+			res.status(200).send(user.friends);
+		}).catch((err) => {
+			console.log("login failed!");
+			res.status(400).send(err);
+		});
+});
+
+//get user lists
+app.get('/users/lists', (req, res) => {
+	var username = localStorage.getItem('user');
+	var password = localStorage.getItem('pass');
+
+	User.findByCredentials(username, password)
+		.then((user) => {
+			res.status(200).send(user.lists);
+		}).catch((err) => {
+			console.log("login failed!");
+			res.status(400).send(err);
+		});
+});
 
 
 var server = app.listen(port, function() {

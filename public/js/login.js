@@ -45,6 +45,10 @@ function validate() {
 		.then(function(response) {
 		  if (response.ok) {
 				console.log("login was succesful");
+
+				localStorage.setItem('user', user);
+				localStorage.setItem('pass', pass);
+
 				window.location = "list.html";
 				return;
 			}
