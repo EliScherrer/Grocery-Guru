@@ -49,7 +49,7 @@ function validate() {
 				window.localStorage.setItem('user', user);
 				window.localStorage.setItem('pass', pass);
 
-				window.location = "list.html";
+				window.location = "/list";
 				return;
 			}
 			else {
@@ -89,7 +89,7 @@ function create() {
 				localStorage.setItem('user', user);
 				localStorage.setItem('pass', pass);
 
-				window.location = "list.html";
+				window.location = "/list";
 				return;
 			}
 			else {

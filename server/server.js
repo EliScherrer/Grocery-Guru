@@ -24,7 +24,9 @@ app.use(express.static(path.join(__dirname, '/../public')));
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/index.html'));
 });
-
+app.get('/list', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/index.html'));
+});
 //login
 app.get('/login', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/login.html'));
@@ -88,25 +90,26 @@ app.post('/users/login', (req, res) => {
 });
 
 //get user friends
-app.get('/users/friends', (req, res) => {
-	var username = window.localStorage.getItem('user');
-	var password = window.localStorage.getItem('pass');
+app.post('/users/friends', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password']);
 
-	User.findByCredentials(username, password)
+	console.log(body.username);
+
+	User.findByCredentials(body.username, body.password)
 		.then((user) => {
 			res.status(200).send(user.friends);
 		}).catch((err) => {
-			console.log("login failed!");
+			console.log("couldn't get friends");
+			console.log(err);
 			res.status(400).send(err);
 		});
 });
 
 //get user lists
-app.get('/users/lists', (req, res) => {
-	var username = localStorage.getItem('user');
-	var password = localStorage.getItem('pass');
+app.post('/users/lists', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password']);
 
-	User.findByCredentials(username, password)
+	User.findByCredentials(body.username, body.password)
 		.then((user) => {
 			res.status(200).send(user.lists);
 		}).catch((err) => {
