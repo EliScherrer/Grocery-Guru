@@ -46,8 +46,8 @@ function validate() {
 		  if (response.ok) {
 				console.log("login was succesful");
 
-				localStorage.setItem('user', user);
-				localStorage.setItem('pass', pass);
+				window.localStorage.setItem('user', user);
+				window.localStorage.setItem('pass', pass);
 
 				window.location = "list.html";
 				return;
@@ -85,6 +85,10 @@ function create() {
 		.then(function(response) {
 			if (response.ok) {
 				console.log("account creation was succesful");
+
+				localStorage.setItem('user', user);
+				localStorage.setItem('pass', pass);
+
 				window.location = "list.html";
 				return;
 			}

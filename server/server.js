@@ -89,8 +89,8 @@ app.post('/users/login', (req, res) => {
 
 //get user friends
 app.get('/users/friends', (req, res) => {
-	var username = localStorage.getItem('user');
-	var password = localStorage.getItem('pass');
+	var username = window.localStorage.getItem('user');
+	var password = window.localStorage.getItem('pass');
 
 	User.findByCredentials(username, password)
 		.then((user) => {
