@@ -1,4 +1,5 @@
-var BASE_URL = "http://localhost:3000";
+//var BASE_URL = "http://localhost:3000";
+var BASE_URL = "https://mysterious-inlet-94873.herokuapp.com";
 
 // OLD VALIDATION
 
@@ -31,7 +32,8 @@ function validate() {
 	var props = {
 		method: 'POST',
 		headers: {
-			'content-type': 'application/json'
+			'content-type': 'application/json',
+			// 'mode': 'cors'
 		},
 		body: JSON.stringify({
 			username: user,
