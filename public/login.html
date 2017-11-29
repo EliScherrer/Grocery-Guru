@@ -1,8 +1,8 @@
 <html>
     <head>
         <title>Grocery Guru Login</title>
-        <link rel="stylesheet" href="./css/login.css"/>
-        <script src="./login.js"></script>
+        <link rel="stylesheet" href="/css/login.css"/>
+        <script src="/js/login.js"></script>
     </head>
     <body>
         <div class="container">
@@ -13,9 +13,13 @@
                 <input type="text" name="username" id="username"/>
                 <label>Password :</label>
                 <input type="password" name="password" id="password"/>
-                <input type="button" value="Login" id="submit" onclick="validate()"/>
+                <input type="button" value="Login" id="login" onclick="validate()"/>
+								<input type="button" value="Create Account" id="createAccount" onclick="create()"/>
             </form>
-            <span><b class="note">Note : </b>For now only use following username and password. <br/><b class="valid">User Name : Test1234<br/>Password : Test1234</b></span>
+            <span>
+							<b class="note">default users: user1,user2,user3,user4,user5 </b>
+							<b class="valid"><br/>with corresponding passwords: pass1,pass2,...</b>
+						</span>
         </div>
         </div>
     </body>

@@ -1,6 +1,7 @@
 {
 	"development": {
 		"PORT": 3000,
-		"MONGODB_URI": "mongodb://localhost:27017/GroceryGuru"
+		"MONGODB_URI": "mongodb://localhost:27017/GroceryGuru",
+		"BASE_URL": "localhost:3000"
 	}
 }

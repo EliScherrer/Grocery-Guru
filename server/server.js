@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, '/../public')));
 
 //page routes
 //index

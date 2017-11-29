@@ -1,6 +1,6 @@
 var attempt = 5; // Variable to count number of attempts.
 // Below function Executes on click of login button.
-function validate(){
+function validate() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     if ( username == "Test1234" && password == "Test1234"){
@@ -18,4 +18,29 @@ function validate(){
             return false;
         }
     }
+}
+
+function validate() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+		var myHeaders = new Headers();
+
+		var props = { method: 'GET',
+		               headers: myHeaders,
+		               mode: 'cors',
+		               cache: 'default' };
+
+		fetch('flowers.jpg', myInit).then(function(response) {
+		  return response.blob();
+		}).then(function(myBlob) {
+		  var objectURL = URL.createObjectURL(myBlob);
+		  myImage.src = objectURL;
+		});
+
+
+}
+
+function create() {
+
 }

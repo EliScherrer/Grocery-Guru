@@ -42,10 +42,10 @@ center{
 	color: #fcfcfc;
 }
 .note{
-	color:rgb(240, 23, 23);
+	color: white;
 }
 .valid{
-	color:rgb(240, 23, 23);
+	color: white;
 }
 .back{
 	text-decoration: none;
@@ -55,7 +55,16 @@ center{
 	border-radius: 2px;
 	color: rgb(252, 252, 252);
 }
-input[type=button]{
+
+#username {
+	color: black;
+}
+
+#password {
+	color: black;
+}
+
+#login {
 	font-size: 16px;
 	background: #000000;
 	border: 1px solid #e5a900;
@@ -64,9 +73,28 @@ input[type=button]{
 	cursor: pointer;
 	width: 100%;
 	border-radius: 5px;
-	padding: 10px 0;
+	padding: 10px;
 	outline:none;
 }
-input[type=button]:hover{
+
+#login:hover{
+	background: #808080;
+}
+
+#createAccount {
+	font-size: 16px;
+	background: #000000;
+	border: 1px solid #e5a900;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 5px;
+	padding: 10px;
+	top: 10px;
+	outline:none;
+}
+
+#createAccount:hover{
 	background: #808080;
 }

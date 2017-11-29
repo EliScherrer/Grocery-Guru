@@ -6,14 +6,18 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 1,
-    unique: true,
+    unique: true
   },
   password: {
     type: String,
     require: true,
-    minlength: 1,
-  }
+  },
+	lists: [{
+		type: String
+	}],
+	friends: [{
+		type: String
+	}]
 });
 
 UserSchema.statics.findByCredentials = function (username, password) {
