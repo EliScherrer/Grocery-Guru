@@ -2,6 +2,7 @@
     <head>
         <title>List 1</title>
         <link rel="stylesheet" href="./css/list.css"/>
+        <script src="./js/list.js"></script>
     </head>
 
     <div class="left">
@@ -12,33 +13,8 @@
         <h2><font size="12">Recipes</font></h2>
     </div>
 
-    <body>
-        <table id="ingredients">
-            <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Type</th>
-    	        <th>Acquired</th>
-            </tr>
-            <tr>
-                <td>Milk</td>
-                <td>1 (gallon)</td>
-                <td>Dairy</td>
-                <td>Box</td>
-            </tr>
-            <tr>
-                <td>Chicken Breast</td>
-                <td>2 (lbs)</td>
-                <td>Protien</td>
-                <td>Box</td>
-            </tr>
-            <tr>
-                <td>Spinach</td>
-                <td>1 (lbs)</td>
-                <td>Vegetable</td>
-                <td>Box</td>
-            </tr>
-        </table>
+    <body onload="create_table()">
+        <table id="ingredients"></table>
 
         <h1>Completed</h1>
 
