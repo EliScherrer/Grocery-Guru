@@ -181,6 +181,21 @@ app.get('/lists/get', (req, res) => {
 });
 
 //TODO add item to list
+app.post('/lists/add', (req, res) => {
+	var body = _.pick(req.body, ['listName']);
+	var item = _.pick(req.body, ['itemName', 'quantity', 'genre', 'acquired']);
+	console.log(item);
+
+	//TODO do some error checking here to make sure all the fields are there and have valid values
+
+	var updated = List.findOneAndUpdate(
+		{ "listName" : body.listName },
+		{ $push: { items: item } },
+		{ returnNewDocument: true }
+	);
+	res.status(200).send("worked");
+});
+
 
 //TODO remove item from list
 
