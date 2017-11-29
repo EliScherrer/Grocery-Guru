@@ -37,6 +37,6 @@ ListSchema.statics.findByName = function (listName) {
 
 
 
-var List = mongoose.model('lists', UserSchema)
+var List = mongoose.model('lists', ListSchema)
 
 module.exports = { List };

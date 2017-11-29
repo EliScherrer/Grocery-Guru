@@ -126,6 +126,13 @@ app.post('/users/lists', (req, res) => {
 		});
 });
 
+//TODO add friends
+
+//TODO remove friends
+
+//TODO add lists
+
+//TODO remove lists
 
 /*******************************
 
@@ -133,17 +140,41 @@ app.post('/users/lists', (req, res) => {
 
 *******************************/
 //create list
-app.post('/list/create', (req, res) => {
-	var body = _.pick(req.body, ['username', 'password']);
+app.post('/lists/create', (req, res) => {
+	var body = _.pick(req.body, ['listName']);
+	var user = _.pick(req.body, ['username', 'password']);
 
 	var list = new List(body);
+
+	// var item = {
+	// 	itemName : "apple",
+	// 	quantity : "2",
+	// 	genre : "fruit",
+	// 	acquired : "false",
+	// }
+	// list.items.push(item);
 
 	list.save()
 		.then(() => {
 			console.log("list creation was successful!");
-			res.status(200).send("list created for: " + body.username);
+			res.status(200).send("list created for: " + user.username);
 		}).catch((err) => {
 			console.log("list creation failed!");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
+
+//get list - list name is in the query string - should probably add the unique ID to this (or replace with)
+app.get('/lists/get', (req, res) => {
+	var listName = req.query.listName
+	console.log(listName);
+
+	List.findByName(listName)
+		.then((list) => {
+			res.status(200).send(list);
+		}).catch((err) => {
+			console.log("couldn't get the list");
 			console.log(err);
 			res.status(400).send(err);
 		});
