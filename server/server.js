@@ -50,8 +50,11 @@ app.post('/users/create', (req, res) => {
 
 	user.save()
 		.then(() => {
-			res.status(200).sendFile(path.join(__dirname + '/../public/index.html'));
+			console.log("account creation was successful!");
+			res.status(200).send("account created for: " + body.username);
 		}).catch((err) => {
+			console.log("account creation failed!");
+			console.log(err);
 			res.status(400).send(err);
 		});
 });
@@ -62,8 +65,10 @@ app.post('/users/login', (req, res) => {
 
 	User.findByCredentials(body.username, body.password)
 		.then((user) => {
-			res.status(200).sendFile(path.join(__dirname + '/../public/index.html'));
+			console.log(user);
+			res.status(200).send(user);
 		}).catch((err) => {
+			console.log("login failed!");
 			res.status(400).send(err);
 		});
 });
