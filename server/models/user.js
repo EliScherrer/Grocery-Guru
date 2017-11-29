@@ -12,6 +12,7 @@ var UserSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+	//TODO lists array should probably also store the unique id incase there are multiple lists with the same name
 	lists: [{
 		type: String
 	}],

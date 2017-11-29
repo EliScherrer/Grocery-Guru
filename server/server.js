@@ -6,6 +6,7 @@ var path = require('path');
 const _ = require('lodash');
 
 const { User } = require('./models/user');
+const { List } = require('./models/list');
 const { mongoose, mongoUrl } = require('./database/mongoose');
 const { ObjectID } = require('mongodb');
 
@@ -19,7 +20,11 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
-//page routes
+/*******************************
+
+	   page navigation routes
+
+*******************************/
 //index
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/index.html'));
@@ -43,8 +48,11 @@ app.get('/recipes', function(req, res) {
 });
 
 
+/*******************************
 
-//user api routes
+				user api routes
+
+*******************************/
 //create account
 app.post('/users/create', (req, res) => {
 	var body = _.pick(req.body, ['username', 'password']);
@@ -117,6 +125,43 @@ app.post('/users/lists', (req, res) => {
 			res.status(400).send(err);
 		});
 });
+
+
+/*******************************
+
+				list api routes
+
+*******************************/
+//create list
+app.post('/list/create', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password']);
+
+	var list = new List(body);
+
+	list.save()
+		.then(() => {
+			console.log("list creation was successful!");
+			res.status(200).send("list created for: " + body.username);
+		}).catch((err) => {
+			console.log("list creation failed!");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
+
+//TODO add item to list
+
+//TODO remove item from list
+
+//TODO change item on list
+
+//TODO share list
+
+//TODO delete list
+
+
+
+
 
 
 var server = app.listen(port, function() {
