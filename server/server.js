@@ -180,20 +180,46 @@ app.get('/lists/get', (req, res) => {
 		});
 });
 
-//TODO add item to list
+//add item to list
 app.post('/lists/add', (req, res) => {
 	var body = _.pick(req.body, ['listName']);
 	var item = _.pick(req.body, ['itemName', 'quantity', 'genre', 'acquired']);
 	console.log(item);
 
 	//TODO do some error checking here to make sure all the fields are there and have valid values
-
-	var updated = List.findOneAndUpdate(
-		{ "listName" : body.listName },
-		{ $push: { items: item } },
-		{ returnNewDocument: true }
-	);
-	res.status(200).send("worked");
+	if (body.listName === undefined || body.listName === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.itemName === undefined || item.itemName === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.quantity === undefined || item.quantity === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.genre === undefined || item.genre === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.acquired === undefined || item.acquired === null) {
+		res.status(400).send("missing parameters");
+	}
+	else {
+		List.findOneAndUpdate(
+			{ "listName" : body.listName },
+			{ $push: { items: item } },
+			{ new: true },
+			function (err, doc) {
+				if (err) {
+					console.log("didn't work?");
+					console.log(err);
+					res.status(400).send(err);
+				}
+				else {
+					console.log(doc);
+					res.status(200).send(doc);
+				}
+			}
+		);
+	}
 });
 
 
