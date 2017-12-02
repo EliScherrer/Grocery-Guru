@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname, '/../public')));
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/index.html'));
 });
-app.get('/list', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../public/index.html'));
+app.get('/home', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/home.html'));
 });
 //login
 app.get('/login', function(req, res) {
@@ -127,8 +127,46 @@ app.post('/users/lists', (req, res) => {
 });
 
 //TODO add friends
+app.post('/users/friends/add', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password', 'friend']);
+
+	console.log(body.username);
+	//first find the logged in user
+	User.findByCredentials(body.username, body.password)
+		.then((user) => {
+			//then try to add a friend
+			User.findByCredentials(body.username, body.password)
+			.then((user) => {
+				res.status(200).send("friend added");
+			}).catch((err) => {
+				console.log("couldn't add that person");
+				console.log(err);
+				res.status(400).send(err);
+			});
+
+
+		}).catch((err) => {
+			console.log("couldn't find this user");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
 
 //TODO remove friends
+app.post('/users/friends/remove', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password']);
+
+	console.log(body.username);
+
+	User.findByCredentials(body.username, body.password)
+		.then((user) => {
+			res.status(200).send(user.friends);
+		}).catch((err) => {
+			console.log("couldn't get friends");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
 
 //TODO add lists
 
