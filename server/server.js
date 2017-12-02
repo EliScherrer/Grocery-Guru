@@ -325,7 +325,7 @@ app.get('/lists/get', (req, res) => {
 });
 
 //add item to list
-app.post('/lists/add', (req, res) => {
+app.post('/lists/item/add', (req, res) => {
 	var body = _.pick(req.body, ['listName']);
 	var item = _.pick(req.body, ['itemName', 'quantity', 'genre', 'acquired']);
 	console.log(item);
@@ -366,8 +366,34 @@ app.post('/lists/add', (req, res) => {
 	}
 });
 
-
 //TODO remove item from list
+app.post('/lists/item/remove', (req, res) => {
+	var body = _.pick(req.body, ['listName', 'itemName']);
+
+	User.findByCredentials(body.username, body.password)
+		.then((user) => {
+			User.update(
+	  		{ "username" : body.username },
+			  { $pull: { lists: body.listName } },
+			  { multi: false },
+				function (err, doc) {
+					if (doc.nModified === 0) {
+						console.log("couldn't remove that list, probably bc it isn't one of your lists");
+						res.status(400).send("couldn't remove that list, probably bc it isn't one of your lists");
+					}
+					else {
+						console.log(doc);
+						res.status(200).send("list removed!");
+					}
+				}
+			);
+		}).catch((err) => {
+			console.log("couldn't find the currently logged in user");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
+
 
 //TODO change item on list
 

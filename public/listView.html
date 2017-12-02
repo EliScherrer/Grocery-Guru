@@ -1,15 +1,55 @@
 <html>
-<head>
-    <title>Grocery Guru</title>
-</head>
+    <head>
+        <title>List 1</title>
+        <link rel="stylesheet" href="./css/list.css"/>
+        <script src="./js/home.js"></script>
+    </head>
+<!--
+    <div class="left">
+            <h2><font size="12">Grocery Guru</font></h2>
+    </div>
+
+    <div class="right">
+        <h2><font size="12">Recipes</font></h2>
+    </div>
+-->
 
 <body>
-	<h3>view a grocery list here...</h3>
-	<ul>
-		<li><a href="/login" display="block">login page</a></li>
-		<li><a href="/grocerylist" display="block">view a grocery list page</a></li>
-		<li><a href="/" display="block">home page</a></li>
-		<li><a href="/recipes" display="block">browse recipes page</a></li>
-	</ul>
+    <div id="divStart">
+        <label id="lblGroceryGuruHomeTitle"><a href="./index.html">Grocery Guru</a></label>
+        <button type="button" id="btnRecipes" ><a href="./recipes.html"> Recipes </a></button>
+    </div>
+
+    <div id="divTable">
+            <table id="ingredients"></table>
+            <script>
+                create_table();
+            </script>
+
+    </div>
+
 </body>
+
+<!--
+    <body onload="create_table()">
+        <table id="ingredients"></table>
+
+        <h1>Completed</h1>
+
+        <table id="completed_ingredients">
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Type</th>
+                    <th>Acquired</th>
+                </tr>
+                <tr>
+                    <td>Apples</td>
+                    <td>1 (gallon)</td>
+                    <td>Fruit</td>
+                    <td>Box</td>
+                </tr>
+            </table>
+        -->
+    </body>
 </html>
