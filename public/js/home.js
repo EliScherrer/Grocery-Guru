@@ -1,3 +1,8 @@
+function body_onLoad() {
+	create_table();
+}
+
+
 function create_table() {
     //example of input
     var item1 = {
