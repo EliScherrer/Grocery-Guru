@@ -22,17 +22,27 @@ body {
 	background-color:#2bb3bd; 
 }
 
-#btnRecipes {
+#recipes {
 	position: absolute;
-	width: 100px;
-	height: 30px;
-	font-size: 18px;
-	background: #000000;
-	border: 1px solid #e5a900;
-	color: #FFFFFF;
-	font-weight: bold;
-	cursor: pointer;
-	border-radius: 5px;
-	right: 10px;
-	bottom: 5px;
+	top: 150px;
+	clear: both;
+	width: 100%;
+	padding: 25px;
+}
+
+#recipes td, #recipes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#recipes tr:hover {
+	background-color: #ddd;
+}
+
+#recipes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(20, 78, 236);
+    color: white;
 }

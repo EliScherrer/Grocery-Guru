@@ -84,7 +84,7 @@ function create_table() {
     var table = '';
     var list = total[1];
     var rows = list.all.length + 1;
-    var cols = 4;
+    var cols = 2;
     var i = -1;
     for (var r = 0; r < rows; r++) {
         table += '<tr>';
@@ -95,13 +95,7 @@ function create_table() {
                     table += '<th>' + "Name" + '</th>';
                 }
                 else if (c == 1) {
-                    table += '<th>' + "Quantity" + '</th>';
-                }
-                else if (c == 2) {
-                    table += '<th>' + "Type" + '</th>';
-                }
-                else if (c == 3) {
-                    table += '<th>' + "Aquired" + '</th>';
+                    table += '<th>' + "Add to List" + '</th>';
                 }
             }
             else {
@@ -110,18 +104,12 @@ function create_table() {
                     table += '<td>' + list.all[r-1].name + '</td>';
                 }
                 else if (c == 1) {
-                    table += '<td>' + list.all[r-1].quantity + '</td>';
-                }
-                else if (c == 2) {
-                    table += '<td>' + list.all[r-1].type + '</td>';
-                }
-                else if (c == 3) {
-                    table += '<td>' + list.all[r-1].aquired + '</td>';
+                    table += '<td>' + "Add to List" + '</td>';
                 }
             }
         }
         table += '</tr>';
     }
-    var node = document.getElementById("ingredients");
+    var node = document.getElementById("recipes");
     node.innerHTML = table;
 }

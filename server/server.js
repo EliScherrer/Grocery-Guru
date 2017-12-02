@@ -370,28 +370,25 @@ app.post('/lists/item/add', (req, res) => {
 app.post('/lists/item/remove', (req, res) => {
 	var body = _.pick(req.body, ['listName', 'itemName']);
 
-	User.findByCredentials(body.username, body.password)
-		.then((user) => {
-			User.update(
-	  		{ "username" : body.username },
-			  { $pull: { lists: body.listName } },
+
+			List.update(
+	  		{ "listName" : body.listName },
+			  { $pull: { items: { itemName: body.itemName } } },
 			  { multi: false },
 				function (err, doc) {
 					if (doc.nModified === 0) {
-						console.log("couldn't remove that list, probably bc it isn't one of your lists");
-						res.status(400).send("couldn't remove that list, probably bc it isn't one of your lists");
+						console.log("couldn't remove that item, probably bc it isn't in your lists");
+						console.log(body.listName);
+						console.log(body.itemName);
+						res.status(400).send("couldn't remove that item, probably bc it isn't in your lists");
 					}
 					else {
 						console.log(doc);
-						res.status(200).send("list removed!");
+						res.status(200).send("item removed!");
 					}
 				}
 			);
-		}).catch((err) => {
-			console.log("couldn't find the currently logged in user");
-			console.log(err);
-			res.status(400).send(err);
-		});
+
 });
 
 
