@@ -309,6 +309,31 @@ app.post('/lists/create', (req, res) => {
 		});
 });
 
+//delete list
+app.post('/lists/remove', (req, res) => {
+	var body = _.pick(req.body, ['listName']);
+
+	//make sure that list exists
+	List.findByName(body.listName)
+		.then((list) => {
+			// List.remove(
+			//    { "listName" : body.listName }
+			// );
+			list.remove(function (err) {
+				if(err) {
+					return res.status(400).send(err);
+				}
+				else {
+					res.status(200).send("list deleted");
+				}
+			});
+		}).catch((err) => {
+			console.log("can't remove that list because it doesn't exist");
+			console.log(err);
+			res.status(400).send("can't remove that list because it doesn't exist");
+		});
+});
+
 //get list - list name is in the query string - should probably add the unique ID to this (or replace with)
 app.get('/lists/get', (req, res) => {
 	var listName = req.query.listName
@@ -366,39 +391,31 @@ app.post('/lists/item/add', (req, res) => {
 	}
 });
 
-//TODO remove item from list
+//remove item from list
 app.post('/lists/item/remove', (req, res) => {
 	var body = _.pick(req.body, ['listName', 'itemName']);
 
-
-			List.update(
-	  		{ "listName" : body.listName },
-			  { $pull: { items: { itemName: body.itemName } } },
-			  { multi: false },
-				function (err, doc) {
-					if (doc.nModified === 0) {
-						console.log("couldn't remove that item, probably bc it isn't in your lists");
-						console.log(body.listName);
-						console.log(body.itemName);
-						res.status(400).send("couldn't remove that item, probably bc it isn't in your lists");
-					}
-					else {
-						console.log(doc);
-						res.status(200).send("item removed!");
-					}
-				}
-			);
-
+	List.update(
+		{ "listName" : body.listName },
+	  { $pull: { items: { itemName: body.itemName } } },
+	  { multi: false },
+		function (err, doc) {
+			if (doc.nModified === 0) {
+				console.log("couldn't remove that item, probably bc it isn't in your lists");
+				console.log(body.listName);
+				console.log(body.itemName);
+				res.status(400).send("couldn't remove that item, probably bc it isn't in your lists");
+			}
+			else {
+				console.log(doc);
+				res.status(200).send("item removed!");
+			}
+		}
+	);
 });
 
 
 //TODO change item on list
-
-//TODO share list
-
-//TODO delete list
-
-
 
 
 
