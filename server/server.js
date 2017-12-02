@@ -126,20 +126,43 @@ app.post('/users/lists', (req, res) => {
 		});
 });
 
-//TODO add friends
+//add a friend
 app.post('/users/friends/add', (req, res) => {
 	var body = _.pick(req.body, ['username', 'password', 'friend']);
-
-	console.log(body.username);
 	//first find the logged in user
 	User.findByCredentials(body.username, body.password)
 		.then((user) => {
 			//then try to add a friend
-			User.findByCredentials(body.username, body.password)
+			var oldFriendsList = user.friends;
+
+			User.findByName(body.friend)
 			.then((user) => {
-				res.status(200).send("friend added");
+
+				for (var i = 0; i < oldFriendsList.length; i++) {
+					if (oldFriendsList[i] === body.friend) {
+						return res.status(400).send("That person is already your friend!");
+					}
+				}
+
+				User.findOneAndUpdate(
+					{ "username" : body.username },
+					{ $push: { friends: body.friend } },
+					{ new: true },
+					function (err, doc) {
+						if (err) {
+							console.log("couldn't add?");
+							console.log(err);
+							res.status(400).send(err);
+						}
+						else {
+							console.log(doc);
+							res.status(200).send("friend added!");
+						}
+					}
+				);
+
 			}).catch((err) => {
-				console.log("couldn't add that person");
+				console.log("couldn't find that person");
 				console.log(err);
 				res.status(400).send(err);
 			});
@@ -152,17 +175,31 @@ app.post('/users/friends/add', (req, res) => {
 		});
 });
 
-//TODO remove friends
+//remove a friend from friends list
 app.post('/users/friends/remove', (req, res) => {
-	var body = _.pick(req.body, ['username', 'password']);
+	var body = _.pick(req.body, ['username', 'password', 'friend']);
 
 	console.log(body.username);
 
 	User.findByCredentials(body.username, body.password)
 		.then((user) => {
-			res.status(200).send(user.friends);
+			User.update(
+	  		{ "username" : body.username },
+			  { $pull: { friends: body.friend } },
+			  { multi: false },
+				function (err, doc) {
+					if (doc.nModified === 0) {
+						console.log("couldn't remove that person, probably bc he isn't one of your friends");
+						res.status(400).send("couldn't remove that person, possible he isn't one of your friends");
+					}
+					else {
+						console.log(doc);
+						res.status(200).send(doc);
+					}
+				}
+			);
 		}).catch((err) => {
-			console.log("couldn't get friends");
+			console.log("couldn't find the currently logged in user");
 			console.log(err);
 			res.status(400).send(err);
 		});

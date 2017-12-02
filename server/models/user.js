@@ -40,6 +40,20 @@ UserSchema.statics.findByCredentials = function (username, password) {
 	});
 };
 
+UserSchema.statics.findByName = function (username) {
+	var User = this;
+
+	return User.findOne({username}).then((user) => {
+		if (!user) {
+			return Promise.reject();
+		}
+
+		return new Promise((resolve, reject) => {
+				resolve(user);
+		});
+	});
+};
+
 
 
 var User = mongoose.model('users', UserSchema)
