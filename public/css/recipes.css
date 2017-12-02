@@ -1,0 +1,38 @@
+body {
+	background-color: #2bb3bd;
+}
+#divStart {
+	position: absolute;
+	left: 50px;
+	top: 10px;
+	height: 100px;
+	width: 75%;
+	border: 1px solid rgb(253, 252, 252);
+	background-color: rgb(20, 78, 236);
+}
+
+#lblGroceryGuruHomeTitle {
+	position: absolute;
+	left: 10px;
+	top: 5px;
+	font-size: 24px;
+	font-family: sans-serif;
+	font-weight: bold;
+	color:#fdfdfd;
+	background-color:#2bb3bd; 
+}
+
+#btnRecipes {
+	position: absolute;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #000000;
+	border: 1px solid #e5a900;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+	right: 10px;
+	bottom: 5px;
+}
