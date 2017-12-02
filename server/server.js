@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, '/../public')));
 *******************************/
 //index
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../public/index.html'));
+    res.sendFile(path.join(__dirname + '/../public/home.html'));
 });
 app.get('/home', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/home.html'));
@@ -179,8 +179,6 @@ app.post('/users/friends/add', (req, res) => {
 app.post('/users/friends/remove', (req, res) => {
 	var body = _.pick(req.body, ['username', 'password', 'friend']);
 
-	console.log(body.username);
-
 	User.findByCredentials(body.username, body.password)
 		.then((user) => {
 			User.update(
@@ -194,7 +192,7 @@ app.post('/users/friends/remove', (req, res) => {
 					}
 					else {
 						console.log(doc);
-						res.status(200).send(doc);
+						res.status(200).send("friend removed!");
 					}
 				}
 			);
@@ -205,9 +203,80 @@ app.post('/users/friends/remove', (req, res) => {
 		});
 });
 
-//TODO add lists
+//add a grocery list to the user's lists
+app.post('/users/lists/add', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password', 'listName']);
+	//first find the logged in user
+	User.findByCredentials(body.username, body.password)
+		.then((user) => {
 
-//TODO remove lists
+			//make sure that user doesn't already have that list listed
+			var listsList = user.lists;
+			for (var i = 0; i < listsList.length; i++) {
+				if (listsList[i] === body.listName) {
+					return res.status(400).send("You already have that list!");
+				}
+			}
+
+			//make sure that list exists
+			List.findByName(body.listName)
+				.then((list) => {
+					//add the grocery list to the user's lists
+					User.findOneAndUpdate(
+						{ "username" : body.username },
+						{ $push: { lists: body.listName } },
+						{ new: true },
+						function (err, doc) {
+							if (err) {
+								console.log("couldn't add?");
+								console.log(err);
+								res.status(400).send(err);
+							}
+							else {
+								console.log(doc);
+								res.status(200).send("list added!");
+							}
+						}
+					);
+				}).catch((err) => {
+					console.log("can't add that list because it doesn't exist");
+					console.log(err);
+					res.status(400).send("can't add that list because it doesn't exist");
+				});
+		}).catch((err) => {
+			console.log("couldn't find the currently logged in user");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
+
+//remove a grocery list from the user's lists
+app.post('/users/lists/remove', (req, res) => {
+	var body = _.pick(req.body, ['username', 'password', 'listName']);
+
+	User.findByCredentials(body.username, body.password)
+		.then((user) => {
+			User.update(
+	  		{ "username" : body.username },
+			  { $pull: { lists: body.listName } },
+			  { multi: false },
+				function (err, doc) {
+					if (doc.nModified === 0) {
+						console.log("couldn't remove that list, probably bc it isn't one of your lists");
+						res.status(400).send("couldn't remove that list, probably bc it isn't one of your lists");
+					}
+					else {
+						console.log(doc);
+						res.status(200).send("list removed!");
+					}
+				}
+			);
+		}).catch((err) => {
+			console.log("couldn't find the currently logged in user");
+			console.log(err);
+			res.status(400).send(err);
+		});
+});
 
 /*******************************
 
