@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="./css/list.css"/>
         <script src="./js/list.js"></script>
     </head>
-
+<!--
     <div class="left">
             <h2><font size="12">Grocery Guru</font></h2>
     </div>
@@ -12,7 +12,25 @@
     <div class="right">
         <h2><font size="12">Recipes</font></h2>
     </div>
+-->
 
+<body>
+    <div id="divStart">
+        <label id="lblGroceryGuruHomeTitle"><a href="./index.html">Grocery Guru</a></label>
+        <button type="button" id="btnRecipes" ><a href="./recipes.html"> Recipes </a></button>
+    </div>
+
+    <div id="divTable">
+            <table id="ingredients"></table>
+            <script>
+                create_table();
+            </script>           
+
+    </div>
+
+</body>
+
+<!--
     <body onload="create_table()">
         <table id="ingredients"></table>
 
@@ -32,5 +50,6 @@
                     <td>Box</td>
                 </tr>
             </table>
+        -->
     </body>
 </html>

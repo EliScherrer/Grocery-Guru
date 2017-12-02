@@ -22,11 +22,12 @@
 			#lblGroceryGuruHomeTitle {
 				position: absolute;
 				left: 10px;
-				top: 0px;
+				top: 5px;
 				font-size: 24px;
 				font-family: sans-serif;
                 font-weight: bold;
-                color:#fdfdfd;
+				color:#fdfdfd;
+				background-color:#2bb3bd; 
 			}
 
 
