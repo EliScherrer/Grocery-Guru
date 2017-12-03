@@ -38,9 +38,19 @@ function create_button(listname) {
     var button = document.createElement("button");
     button.innerHTML = listname;
     
+    var createA = document.createElement('a');
+    createA.setAttribute('href', "listView.html");
+
+    createA.appendChild(button);
+
     // 2. Append somewhere
-    var body = document.getElementsByTagName("body")[0];
-    body.appendChild(button);
+    var node = document.createElement("li");
+    node.appendChild(createA);
+    //var link = document.getElementById("li"); //or grab it by tagname etc
+    //link.href = "listView.html";
+    document.getElementById("but_lists").appendChild(node);
+    //var list = document.getElementsByTagName("ul");
+    //list.appendChild(button);
 }
 
 function create_all_buttons() {
@@ -128,7 +138,8 @@ function create_all_buttons() {
         var list4 = {list_name: "list_d", all: items4};
         var total = [list1, list2, list3, list4];
     for (var i = 0; i < total.length; i++) {
-        create_button(total[0].list_name);
+        create_button(total[i].list_name);
+        //add_style(i);
     }
 }
 
