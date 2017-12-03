@@ -128,8 +128,18 @@ function create_all_buttons() {
         var list4 = {list_name: "list_d", all: items4};
         var total = [list1, list2, list3, list4];
     for (var i = 0; i < total.length; i++) {
-        create_button(total[i]);
+        create_button(total[0].list_name);
     }
+}
+
+function add_style(i) {
+    var sheet = document.styleSheets;
+    var name = "button";
+    final = name.concat(i);
+    var sty = "{position: absolute; left: 10px; top: 150px; width: 100px; height: 30px; font-size: 18px; font-family: sans-serif; font-weight: bold; color: white; border-radius: 4px; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); background: rgb(28, 184, 176);}"
+    final = final.concat(sty);
+    sheet.innerHTML = final
+    document.body.appendChild(sheet);    
 }
 
 /*function create_list_buttons() {  
