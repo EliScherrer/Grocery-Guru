@@ -190,6 +190,58 @@ function getList(listName) {
 		});
 }
 
+function getListNotAcquired(listName) {
+	var props = {
+        //not 100% sure this is the correct way for database
+		method: 'GET ListOfItems Where acquired = False'
+	};
+
+	fetch(BASE_URL + `/lists/get?listName={listName}`, props)
+		.then(function(list) {
+			if (list.ok) {
+				return list;
+			}
+			else {
+				console.log("couldn't get the list ");
+
+				//TODO couldn't get the list for some reason, display an error message
+
+				return;
+			}
+		}).catch(function(err) {
+				console.log("there was a network error");
+				console.log(err);
+				return;
+		});
+}
+
+function getListAquired(listName) {
+	var props = {
+		method: 'GET ListOfItems Where acquired = True'
+	};
+
+	fetch(BASE_URL + `/lists/get?listName={listName}`, props)
+		.then(function(list) {
+			if (list.ok) {
+				return list;
+			}
+			else {
+				console.log("couldn't get the list ");
+
+				//TODO couldn't get the list for some reason, display an error message
+
+				return;
+			}
+		}).catch(function(err) {
+				console.log("there was a network error");
+				console.log(err);
+				return;
+		});
+}
+
+
+
+
 function getUserLists() {
 	//get the username and password that were saved to local storage when the user loged in
 	username = localStorage.getItem(user);
