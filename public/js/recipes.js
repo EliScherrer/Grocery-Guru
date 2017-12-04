@@ -85,7 +85,6 @@ function create_table() {
     //var list = total[1];
     var rows = total.length + 1;
     var cols = 2;
-    var i = -1;
     for (var r = 0; r < rows; r++) {
         table += '<tr>';
         //cols = total[r].all.length;
@@ -101,7 +100,7 @@ function create_table() {
             else {
                 //i++;
                 if (c == 0) {
-                    table += '<td>'+'<a href = recipeView.html>' + total[r-1].recipe_name + '</a>'+'</td>';
+                    table += '<td id='+total[r-1].recipe_name+'>'+'<a href=recipeView.html>' + total[r-1].recipe_name + '</a>'+'</td>';
                 }
                 else if (c == 1) {
                     table += '<td>' + "Add to List" + '</td>';

@@ -1,4 +1,4 @@
-function create_table() {
+function create_table(recipeName) {
     //example of input
     var item1 = {
         name:"apple",
