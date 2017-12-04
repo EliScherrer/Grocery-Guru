@@ -91,8 +91,8 @@ function validateUser() {
 //get an array of the username's lists
 function getUserLists(username, password) {
 	//get the username and password that were saved to local storage when the user loged in
-	// username = localStorage.getItem(user);
-	// password = localStorage.getItem(pass);
+	// username = localStorage.getItem("user");
+	// password = localStorage.getItem("pass");
 
 	var props = {
 		method: 'POST',
@@ -106,10 +106,13 @@ function getUserLists(username, password) {
 	};
 
 	fetch(BASE_URL + '/users/lists', props)
-		.then(function(lists) {
-			if (lists.ok) {
-				console.log("lists successfully retrieved");
-				return lists;
+		.then(function(response) {
+			if (response.ok) {
+				response.json().then(function(lists) {
+					console.log("lists successfully retrieved");
+					console.log(lists);
+					return lists;
+				});
 			}
 			else {
 				console.log("retrieval failed");
