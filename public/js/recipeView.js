@@ -82,8 +82,8 @@ function create_table() {
     var recipe4 = {recipe_name: "recipe_d", all: items4};
     var total = [recipe1, recipe2, recipe3, recipe4];
     var table = '';
-    //var list = total[1];
-    var rows = total.length + 1;
+    var list = total[1];
+    var rows = list.all.length + 1;
     var cols = 2;
     var i = -1;
     for (var r = 0; r < rows; r++) {
@@ -95,21 +95,21 @@ function create_table() {
                     table += '<th>' + "Name" + '</th>';
                 }
                 else if (c == 1) {
-                    table += '<th>' + "Add to List" + '</th>';
+                    table += '<th>' + "Type" + '</th>';
                 }
             }
             else {
                 //i++;
                 if (c == 0) {
-                    table += '<td>'+'<a href = recipeView.html>' + total[r-1].recipe_name + '</a>'+'</td>';
+                    table += '<td>' + list.all[r-1].name + '</td>';
                 }
                 else if (c == 1) {
-                    table += '<td>' + "Add to List" + '</td>';
+                    table += '<td>' + list.all[r-1].type + '</td>';
                 }
             }
         }
         table += '</tr>';
     }
-    var node = document.getElementById("recipes");
+    var node = document.getElementById("ingredients");
     node.innerHTML = table;
 }
