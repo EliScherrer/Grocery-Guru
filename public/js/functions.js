@@ -137,9 +137,36 @@ function addListToUser(listName, username) {
 
 ************************************************/
 
-//creates a blank list listName
+//creates a blank list listName -- returns true if successful, false if failed
 function createList(listName) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			listName: listName
+		})
+	};
 
+	fetch(BASE_URL + '/lists/create', props)
+		.then(function(response) {
+			if (response.ok) {
+				console.log("list was successfully created");
+				return true;
+			}
+			else {
+				console.log("creation failed");
+
+				//TODO adding failed, send some error message
+
+				return false;
+			}
+		}).catch(function(err) {
+				console.log("there was a network error");
+				console.log(err);
+				return false;
+		});
 }
 
 //returns the listName list object

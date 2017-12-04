@@ -31,5 +31,7 @@ function newElement() {
     //get users list and also make sure that this list doesn't already exist
     if(inputValue != "") {
         create_button(inputValue);
+        createList(inputValue);
+        addListToUser(inputValue, localStorage.getItem(user));
     }
   }
