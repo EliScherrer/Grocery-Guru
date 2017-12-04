@@ -108,6 +108,36 @@ body {
 	border-radius: 5px;
 }
 
+.friendBtn {
+	position: absolute;
+	right: 10px;
+	bottom: 50px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #2bb3bd;
+	border: 1px solid #f8f7f6;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#Friend {
+	position: absolute;
+	right: 125px;
+	bottom: 50px;
+	width: 200px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
 #btnRecipes {
 	position: absolute;
 	width: 100px;
