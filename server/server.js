@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, '/../public')));
 *******************************/
 //index
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../public/home.html'));
+    res.sendFile(path.join(__dirname + '/../public/login.html'));
 });
 app.get('/home', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/home.html'));
