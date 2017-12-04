@@ -33,6 +33,66 @@ body {
 	background-color:#2bb3bd; 
 }
 
+#Item {
+	position: absolute;
+	left: 50px;
+	top: 120px;
+	width: 150px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#Quantity {
+	position: absolute;
+	left: 210px;
+	top: 120px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#Type {
+	position: absolute;
+	left: 320px;
+	top: 120px;
+	width: 150px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.addBtn {
+	position: absolute;
+	left: 500px;
+	top: 120px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #2bb3bd;
+	border: 1px solid #f8f7f6;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
 #btnRecipes {
 	position: absolute;
 	width: 100px;
