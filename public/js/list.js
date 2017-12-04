@@ -171,6 +171,13 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 }
 
 function newItem() {
+	var itemName = document.getElementById("Item").value;
+	var quantity = document.getElementById("Quantity").value;
+	var type = document.getElementById("Type").value;
+	var acquired = "False";
+	//var listName = 
+	addItemToList(listName, itemName, quantity, type, acquired)
+	create_button(length);
 //addItemToList();
 //create_table();
 }
