@@ -105,35 +105,39 @@ function getUserLists(username, password) {
 		})
 	};
 
-	fetch(BASE_URL + '/users/lists', props)
-		.then(function(response) {
-			if (response.ok) {
-				response.json().then(function(lists) {
-					console.log("lists successfully retrieved");
-					console.log("lists...");
-					console.log(lists);
-					return lists;
-				});
-			}
-			else {
-				console.log("retrieval failed");
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/lists', props)
+			.then(function(response) {
 
-				//TODO retrieval failed, send an error message (this should probably never happen though because all the info is gathered from local storage)
+				if (response.ok) {
+					response.json().then(function(lists) {
+						console.log("lists successfully retrieved");
+						console.log("lists...");
+						console.log(lists);
+						resolve(lists)
+						return resolve(lists);
+					});
+				}
+				else {
+					console.log("retrieval failed");
 
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
+					//TODO retrieval failed, send an error message (this should probably never happen though because all the info is gathered from local storage)
+
+					return reject("retrieval failed");
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject("there was a network error");
+			});
+	 });
 }
 
-//add the listName to the username's lists
+//TODO add the listName to the username's lists
 function addListToUser(listName, username) {
 
 }
- //Delete user from list??
+ //TODO Delete user from list??
 
 /**********************************************
 
@@ -141,17 +145,9 @@ function addListToUser(listName, username) {
 
 ************************************************/
 
-//needs to be done
+//TODO needs to be done
 function deleteList(listName) {
-	var props = {
-		method: 'Delete',
-		headers: {
-			'content-type': 'application/json'
-		},
-		body: JSON.stringify({
-			listName: listName
-		})
-	};
+
 
 }
 
@@ -248,39 +244,7 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 		});
 }
 
-//needs to be done
+//TODO needs to be done
 function delItemToList(listName, itemName, quantity, genre, acquired) {
-	var props = {
-		method: 'POST',
-		headers: {
-			'content-type': 'application/json'
-		},
-		body: JSON.stringify({
-			listName: listName,
-			itemName: itemName,
-			quantity: quantity,
-			genre: genre,
-			acquired: acquired
-		})
-	};
 
-	fetch(BASE_URL + '/lists/add', props)
-		.then(function(response) {
-			if (response.ok) {
-				console.log("item was successfully added");
-				return;
-			}
-			else {
-				console.log("creation failed");
-
-				//TODO adding failed, send some error message
-
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
 }
-

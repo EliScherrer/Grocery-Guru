@@ -22,12 +22,13 @@ function create_all_buttons() {
 		password = localStorage.getItem("pass");
     //var lists = getUserLists(username, password);
 
-		getUserLists(username, password).then(function (lists) {
-	    for (var i = 0; i < lists.length; i++) {
-	        create_button(lists.listName);
-	        //add_style(i);
-	    }
-		});
+		getUserLists(username, password)
+			.then(function (lists) {
+		    for (var i = 0; i < lists.length; i++) {
+		        create_button(lists[i]);
+		        //add_style(i);
+	    	}
+			});
 }
 
 function newElement() {
