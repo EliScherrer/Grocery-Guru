@@ -140,9 +140,12 @@ function newItem() {
 	var quantity = document.getElementById("Quantity").value;
 	var type = document.getElementById("Type").value;
 	var acquired = "False";
-	//var listName =
 	addItemToList(listName, itemName, quantity, type, acquired)
 	create_button(length);
-//addItemToList();
-//create_table();
 }
+
+function delItem() {
+	//deleteList
+}
+
+
