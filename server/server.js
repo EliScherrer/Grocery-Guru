@@ -286,7 +286,7 @@ app.post('/users/lists/remove', (req, res) => {
 //create list
 app.post('/lists/create', (req, res) => {
 	var body = _.pick(req.body, ['listName']);
-	var user = _.pick(req.body, ['username', 'password']);
+	//var user = _.pick(req.body, ['username', 'password']);
 
 	var list = new List(body);
 
@@ -301,7 +301,7 @@ app.post('/lists/create', (req, res) => {
 	list.save()
 		.then(() => {
 			console.log("list creation was successful!");
-			res.status(200).send("list created for: " + user.username);
+			res.status(200).send("list created for");
 		}).catch((err) => {
 			console.log("list creation failed!");
 			console.log(err);
