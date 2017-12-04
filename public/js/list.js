@@ -135,109 +135,14 @@ function create_table(list2) {
     node.innerHTML = table;
 }
 
-function addItemToList(listName, itemName, quantity, genre, acquired) {
-	var props = {
-		method: 'POST',
-		headers: {
-			'content-type': 'application/json'
-		},
-		body: JSON.stringify({
-			listName: listName,
-			itemName: itemName,
-			quantity: quantity,
-			genre: genre,
-			acquired: acquired
-		})
-	};
-
-	fetch(BASE_URL + '/lists/add', props)
-		.then(function(response) {
-			if (response.ok) {
-				console.log("item was successfully added");
-				return;
-			}
-			else {
-				console.log("creation failed");
-
-				//TODO adding failed, send some error message
-
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
-}
-
 function newItem() {
 	var itemName = document.getElementById("Item").value;
 	var quantity = document.getElementById("Quantity").value;
 	var type = document.getElementById("Type").value;
 	var acquired = "False";
-	//var listName = 
+	//var listName =
 	addItemToList(listName, itemName, quantity, type, acquired)
 	create_button(length);
 //addItemToList();
 //create_table();
-}
-
-function getList(listName) {
-	var props = {
-		method: 'GET'
-	};
-
-	fetch(BASE_URL + `/lists/get?listName={listName}`, props)
-		.then(function(list) {
-			if (list.ok) {
-				return list;
-			}
-			else {
-				console.log("couldn't get the list ");
-
-				//TODO couldn't get the list for some reason, display an error message
-
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
-}
-
-function getUserLists() {
-	//get the username and password that were saved to local storage when the user loged in
-	username = localStorage.getItem(user);
-	password = localStorage.getItem(pass);
-
-	var props = {
-		method: 'POST',
-		headers: {
-			'content-type': 'application/json'
-		},
-		body: JSON.stringify({
-			username: username,
-			password: password,
-		})
-	};
-
-	fetch(BASE_URL + '/users/lists', props)
-		.then(function(lists) {
-			if (lists.ok) {
-				console.log("lists successfully retrieved");
-				return lists;
-			}
-			else {
-				console.log("retrieval failed");
-
-				//TODO retrieval failed, send an error message (this should probably never happen though because all the info is gathered from local storage)
-
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
 }

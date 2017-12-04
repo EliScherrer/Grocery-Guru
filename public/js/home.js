@@ -1,43 +1,7 @@
-function getUserLists() {
-	//get the username and password that were saved to local storage when the user loged in
-	username = localStorage.getItem(user);
-	password = localStorage.getItem(pass);
-
-	var props = {
-		method: 'POST',
-		headers: {
-			'content-type': 'application/json'
-		},
-		body: JSON.stringify({
-			username: username,
-			password: password,
-		})
-	};
-
-	fetch(BASE_URL + '/users/lists', props)
-		.then(function(lists) {
-			if (lists.ok) {
-				console.log("lists successfully retrieved");
-				return lists;
-			}
-			else {
-				console.log("retrieval failed");
-
-				//TODO retrieval failed, send an error message (this should probably never happen though because all the info is gathered from local storage)
-
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
-}
-
 function create_button(listname) {
     var button = document.createElement("button");
     button.innerHTML = listname;
-    
+
     var createA = document.createElement('a');
     createA.setAttribute('href', "listView.html");
 
@@ -137,12 +101,20 @@ function create_all_buttons() {
         var list3 = {list_name: "list_c", all: items3};
         var list4 = {list_name: "list_d", all: items4};
         var total = [list1, list2, list3, list4];
-        
-        //var total = lists;
     for (var i = 0; i < total.length; i++) {
         create_button(total[i].list_name);
         //add_style(i);
     }
+}
+
+function add_style(i) {
+    var sheet = document.styleSheets;
+    var name = "button";
+    final = name.concat(i);
+    var sty = "{position: absolute; left: 10px; top: 150px; width: 100px; height: 30px; font-size: 18px; font-family: sans-serif; font-weight: bold; color: white; border-radius: 4px; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); background: rgb(28, 184, 176);}"
+    final = final.concat(sty);
+    sheet.innerHTML = final
+    document.body.appendChild(sheet);
 }
 
 function newElement() {
@@ -150,8 +122,5 @@ function newElement() {
     //get users list and also make sure that this list doesn't already exist
     if(inputValue != "") {
         create_button(inputValue);
-
-        
-        //add list to database
     }
   }
