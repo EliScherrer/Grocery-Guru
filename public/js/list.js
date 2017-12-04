@@ -1,11 +1,10 @@
 function body_onLoad() {
-	create_table();
+	test();
+	//create_table();
 }
 
-
-function create_table() {
-    //example of input
-    var item1 = {
+function test() {
+	var item1 = {
         name:"apple",
         quantity: 2,
         type: "fruit",
@@ -86,8 +85,13 @@ function create_table() {
     var list3 = {list_name: "list_c", all: items3};
     var list4 = {list_name: "list_d", all: items4};
     var total = [list1, list2, list3, list4];
-    var table = '';
-    var list = total[1];
+    create_table(list1);
+}
+
+function create_table(list2) {
+    //example of input
+	var table = '';
+	var list = list2;
     var rows = list.all.length + 1;
     var cols = 4;
     var i = -1;
@@ -164,6 +168,11 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 				console.log(err);
 				return;
 		});
+}
+
+function newItem() {
+//addItemToList();
+//create_table();
 }
 
 function getList(listName) {
