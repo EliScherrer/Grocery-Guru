@@ -18,7 +18,10 @@ function create_button(listname) {
 }
 
 function create_all_buttons() {
-    var lists = getUserLists();
+    username = localStorage.getItem("user");
+	password = localStorage.getItem("pass");
+    var lists = getUserLists(username, password);
+    console.log(lists);
     console.log(lists);
     for (var i = 0; i < lists.length; i++) {
         create_button(lists.listName);
