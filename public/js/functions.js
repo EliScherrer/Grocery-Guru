@@ -110,6 +110,7 @@ function getUserLists(username, password) {
 			if (response.ok) {
 				response.json().then(function(lists) {
 					console.log("lists successfully retrieved");
+					console.log("lists...");
 					console.log(lists);
 					return lists;
 				});
