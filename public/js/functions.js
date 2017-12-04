@@ -135,6 +135,12 @@ function addListToUser(listName, username) {
 	 functions for doing things with lists
 
 ************************************************/
+
+//creates a blank list listName
+function createList(listName) {
+
+}
+
 //returns the listName list object
 function getList(listName) {
 	var props = {
