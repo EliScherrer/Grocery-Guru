@@ -1,3 +1,4 @@
+var BASE_URL = "https://mysterious-inlet-94873.herokuapp.com";
 /**********************************************
 
 	 functions for doing things with the user

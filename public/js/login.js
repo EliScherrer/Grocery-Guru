@@ -1,5 +1,5 @@
 //var BASE_URL = "http://localhost:3000";
-var BASE_URL = "https://mysterious-inlet-94873.herokuapp.com";
+//var BASE_URL = "https://mysterious-inlet-94873.herokuapp.com";
 
 // OLD VALIDATION
 
