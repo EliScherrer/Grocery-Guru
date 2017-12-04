@@ -19,9 +19,9 @@ function create_button(listname) {
 
 function create_all_buttons() {
     var lists = getUserLists();
-
-    for (var i = 0; i < total.length; i++) {
-        create_button(total[i].list_name);
+    console.log(lists);
+    for (var i = 0; i < lists.length; i++) {
+        create_button(lists.listName);
         //add_style(i);
     }
 }
