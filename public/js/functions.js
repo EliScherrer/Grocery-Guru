@@ -133,13 +133,27 @@ function getUserLists(username, password) {
 function addListToUser(listName, username) {
 
 }
-
+ //Delete user from list??
 
 /**********************************************
 
 	 functions for doing things with lists
 
 ************************************************/
+
+//needs to be done
+function deleteList(listName) {
+	var props = {
+		method: 'Delete',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			listName: listName
+		})
+	};
+
+}
 
 //creates a blank list listName -- returns true if successful, false if failed
 function createList(listName) {
@@ -233,3 +247,40 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 				return;
 		});
 }
+
+//needs to be done
+function delItemToList(listName, itemName, quantity, genre, acquired) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			listName: listName,
+			itemName: itemName,
+			quantity: quantity,
+			genre: genre,
+			acquired: acquired
+		})
+	};
+
+	fetch(BASE_URL + '/lists/add', props)
+		.then(function(response) {
+			if (response.ok) {
+				console.log("item was successfully added");
+				return;
+			}
+			else {
+				console.log("creation failed");
+
+				//TODO adding failed, send some error message
+
+				return;
+			}
+		}).catch(function(err) {
+				console.log("there was a network error");
+				console.log(err);
+				return;
+		});
+}
+
