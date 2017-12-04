@@ -153,11 +153,13 @@ function add_style(i) {
     document.body.appendChild(sheet);    
 }
 
-function newElement() {
+function newList() {
     var inputValue = document.getElementById("myInput").value;
     //get users list and also make sure that this list doesn't already exist
     if(inputValue != "") {
         create_button(inputValue);
+
+        
         //add list to database
     }
   }
