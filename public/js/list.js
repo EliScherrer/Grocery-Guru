@@ -75,9 +75,18 @@ function newItem() {
 	var itemName = document.getElementById("Item").value;
 	var quantity = document.getElementById("Quantity").value;
 	var type = document.getElementById("Type").value;
-	var acquired = "False";
-	addItemToList(listName, itemName, quantity, type, acquired)
-	create_button(length);
+    var acquired = "false";
+    var url = window.location.toString();
+    var res = url.split("=");
+    var list = res[1];
+    addItemToList(list, itemName, quantity, type, acquired)
+    .then(function (result) {
+        create_table(list);
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
+	
 }
 
 function delItem() {
