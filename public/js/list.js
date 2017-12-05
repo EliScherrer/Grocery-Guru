@@ -1,21 +1,21 @@
 function body_onLoad() {
-	test();
+	getTheList();
 	//create_table();
 }
 
-function test() {
+function getTheList() {
     var url = window.location.toString();
     var res = url.split("=");
     var list = res[1];
     console.log(list);
 
     getList(list)
-    .then(function (list1) {
-        create_table(list1);
-    }).catch(function(err) {
-        console.log("there was a error");
-        console.log("Error: " + err);
-    });
+	    .then(function (list1) {
+	        create_table(list1);
+	    }).catch(function(err) {
+	        console.log("there was a error");
+	        console.log("Error: " + err);
+	    });
 }
 
 function create_table(list1) {
@@ -75,18 +75,19 @@ function newItem() {
 	var itemName = document.getElementById("Item").value;
 	var quantity = document.getElementById("Quantity").value;
 	var type = document.getElementById("Type").value;
-    var acquired = "false";
-    var url = window.location.toString();
-    var res = url.split("=");
-    var list = res[1];
-    addItemToList(list, itemName, quantity, type, acquired)
-	    .then(function (result) {
-	        return create_table(list);
-	    }).catch(function(err) {
-	        console.log("there was a error");
-	        console.log("Error: " + err);
-					return;
-	    });
+  var acquired = "false";
+  var url = window.location.toString();
+  var res = url.split("=");
+  var list = res[1];
+
+  addItemToList(list, itemName, quantity, type, acquired)
+    .then(function (result) {
+        return getTheList(list);
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+				return;
+    });
 
 }
 
