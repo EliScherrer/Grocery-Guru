@@ -151,6 +151,7 @@ function addListToUser(listName, username) {
 function addFriendToList(username, friend) {
 
 }
+
 /**********************************************
 
 	 functions for doing things with lists
@@ -325,4 +326,15 @@ function deleteItemFromList(listName, itemName) {
 					return reject(false);
 			});
 	});
+}
+
+/**********************************************
+
+	 functions for using the recipe and food apis
+
+************************************************/
+
+//https://api.edamam.com/search?q=chicken&app_id=3cc3441e&app_key=cb0afaec470edd447aa0adeb3a742781&to=5
+function getRecipe(recipe, numResults) {
+
 }
