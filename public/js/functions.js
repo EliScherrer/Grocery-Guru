@@ -142,8 +142,8 @@ function addListToUser(listName, username) {
 
 }
 
- //TODO Delete user from list??
- function delListToUser(listName, username) {
+ //TODO Delete user from list
+ function delListFromUser(listName, username) {
 
 }
 
@@ -151,6 +151,8 @@ function addListToUser(listName, username) {
 function addFriendToList(username, friend) {
 
 }
+
+
 /**********************************************
 
 	 functions for doing things with lists
