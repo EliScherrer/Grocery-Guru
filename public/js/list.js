@@ -55,7 +55,13 @@ function create_table(list1) {
                     table += '<td>' + list.items[r-1].genre + '</td>';
                 }
                 else if (c == 3) {
-                    table += '<td>' + list.items[r-1].acquired + '</td>';
+                    var kms = "obtained?";
+                    if (list.items[r-1].acquired) {
+                        table += '<td><input type="checkbox" value="checked" checked />' + kms + '</td>';
+                    }
+                    else {
+                        table += '<td><input type="checkbox" value="checked" />' + kms + '</td>';
+                    }
                 }
             }
         }
