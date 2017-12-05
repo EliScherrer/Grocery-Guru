@@ -34,7 +34,7 @@ function create_all_buttons() {
         });
 }
 
-function newElement() {
+function newList() {
     var inputValue = document.getElementById("myInput").value;
     //get users list and also make sure that this list doesn't already exist
     if(inputValue != "") {
