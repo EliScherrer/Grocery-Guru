@@ -3,7 +3,7 @@ function create_button(listname) {
     button.innerHTML = listname;
 
     var createA = document.createElement('a');
-    createA.setAttribute('href', `/grocerylist?listName=${listName}`);
+    createA.setAttribute('href', `/grocerylist?listName=${listname}`);
 
     createA.appendChild(button);
 
