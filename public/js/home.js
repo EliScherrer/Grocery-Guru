@@ -40,7 +40,14 @@ function newList() {
     if(inputValue != "") {
         create_button(inputValue);
         createList(inputValue);
-        addListToUser(inputValue, localStorage.getItem(user));
+        addListToUser(inputValue, localStorage.getItem(user))
+            .then(function (result) {
+                create_button(inputValue);
+                return createList(inputValue);
+            }).catch(function(err) {
+                 console.log("there was a error");
+                 console.log("Error: " + err);
+            });
     }
   }
 
