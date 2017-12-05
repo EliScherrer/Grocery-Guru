@@ -73,7 +73,8 @@ function deleteCurrentList() {
         var res = url.split("=");
         var list = res[1];  
         console.log(list);
-        //deleteList(list);
+        deleteList(list);
+        window.location = "/home";
     } 
 	//deleteList
 }
