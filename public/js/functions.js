@@ -1,4 +1,7 @@
 var BASE_URL = "https://mysterious-inlet-94873.herokuapp.com";
+var FOOD_API_URL = "https://api.edamam.com/search";
+var app_id = "3cc3441e";
+var app_key = "b0afaec470edd447aa0adeb3a742781";
 /**********************************************
 
 	 functions for doing things with the user
@@ -336,5 +339,55 @@ function deleteItemFromList(listName, itemName) {
 
 //https://api.edamam.com/search?q=chicken&app_id=3cc3441e&app_key=cb0afaec470edd447aa0adeb3a742781&to=5
 function getRecipe(recipe, numResults) {
+
+	var props = {
+		method: 'GET'
+	};
+
+	return new Promise((resolve, reject) => {
+		fetch(FOOD_API_URL + `?q=${recipe}&app_id=${app_id}&app_key=${app_key}&to=${numResults}`, props)
+			.then(function(response) {
+				if (response.ok) {
+					response.json().then(function(object) {
+						var results = object.hits;
+						var recipes = [];
+
+						for (var i = 0; i < results.length; i++) {
+							var recipe = results[i].recipe;
+							var recipeName = recipe.label;
+							var link = recipe.url;
+							var image = recipe.image;
+							var ingredients = recipe.ingredientLines;
+
+							var obj = {
+								"name": recipeName,
+								"link": link,
+								"image": image,
+								"ingredients": ingredients
+							};
+
+							recipes.push(obj);
+						}
+
+						return resolve(recipes);
+
+					}).catch(function(err) {
+						console.log("JSON parse failed");
+						return reject(false);
+					});
+				}
+				else {
+					console.log("retrieval failed");
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
+
+
+
 
 }
