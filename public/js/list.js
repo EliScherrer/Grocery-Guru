@@ -80,13 +80,14 @@ function newItem() {
     var res = url.split("=");
     var list = res[1];
     addItemToList(list, itemName, quantity, type, acquired)
-    .then(function (result) {
-        create_table(list);
-    }).catch(function(err) {
-        console.log("there was a error");
-        console.log("Error: " + err);
-    });
-	
+	    .then(function (result) {
+	        return create_table(list);
+	    }).catch(function(err) {
+	        console.log("there was a error");
+	        console.log("Error: " + err);
+					return;
+	    });
+
 }
 
 function delItem() {
