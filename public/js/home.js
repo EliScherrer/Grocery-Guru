@@ -34,7 +34,7 @@ function create_all_buttons() {
             });
 }
 
-function newElement() {
+function newList() {
     var inputValue = document.getElementById("myInput").value;
     //get users list and also make sure that this list doesn't already exist
     if(inputValue != "") {
@@ -44,12 +44,8 @@ function newElement() {
     }
   }
 
-  function addFriend() {
-	var FriendName = document.getElementById("Friend").value;
-	//var listName =
-	addListToUser(listName, "Friend");
-}
 
 function newFriend() {
-
+    var friendName = document.getElementById("Friend").value;
+    addFriendToList( username = localStorage.getItem("user"), friendName)
 }
