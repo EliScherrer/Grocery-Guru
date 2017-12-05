@@ -3,7 +3,7 @@ function create_button(listname) {
     button.innerHTML = listname;
 
     var createA = document.createElement('a');
-    createA.setAttribute('href', "listView.html");
+    createA.setAttribute('href', `/grocerylist?listName={listName}`);
 
     createA.appendChild(button);
 
@@ -43,10 +43,10 @@ function newElement() {
 
   function addFriend() {
 	var FriendName = document.getElementById("Friend").value;
-	//var listName = 
+	//var listName =
 	addListToUser(listName, "Friend");
 }
 
 function newFriend() {
-    
+
 }

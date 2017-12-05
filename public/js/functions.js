@@ -141,13 +141,15 @@ function getUserLists(username, password) {
 function addListToUser(listName, username) {
 
 }
+
  //TODO Delete user from list??
  function delListToUser(listName, username) {
-	
+
 }
 
-function addFriend(username, friend) {
-	
+//TODO add a friend to friend's list
+function addFriendToList(username, friend) {
+
 }
 /**********************************************
 
@@ -155,7 +157,7 @@ function addFriend(username, friend) {
 
 ************************************************/
 
-//TODO needs to be done
+//TODO delete a list
 function deleteList(listName) {
 
 
