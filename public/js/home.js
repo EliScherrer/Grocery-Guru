@@ -44,12 +44,8 @@ function newList() {
     }
   }
 
-  function addFriend() {
-	var FriendName = document.getElementById("Friend").value;
-	//var listName =
-	addListToUser(listName, "Friend");
-}
 
 function newFriend() {
-
+    var friendName = document.getElementById("Friend").value;
+    addFriendToList( username = localStorage.getItem("user"), friendName)
 }
