@@ -21,28 +21,30 @@ function createUser() {
 		})
 	};
 
-	fetch(BASE_URL + '/users/create', props)
-		.then(function(response) {
-			if (response.ok) {
-				console.log("account creation was succesful");
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/create', props)
+			.then(function(response) {
+				if (response.ok) {
+					console.log("account creation was succesful");
 
-				localStorage.setItem('user', user);
-				localStorage.setItem('pass', pass);
+					localStorage.setItem('user', user);
+					localStorage.setItem('pass', pass);
 
-				window.location = "/home";
-				return;
-			}
-			else {
-				console.log("creation failed");
+					window.location = "/home";
+					return resolve(true);
+				}
+				else {
+					console.log("creation failed");
 
-				//TODO username was already taken, tell the user to come up with something else
+					//TODO username was already taken, tell the user to come up with something else
 
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
 		});
 }
 
@@ -63,29 +65,31 @@ function validateUser() {
 		})
 	};
 
-	fetch(BASE_URL + '/users/login', props)
-		.then(function(response) {
-		  if (response.ok) {
-				console.log("login was succesful");
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/login', props)
+			.then(function(response) {
+			  if (response.ok) {
+					console.log("login was succesful");
 
-				window.localStorage.setItem('user', user);
-				window.localStorage.setItem('pass', pass);
+					window.localStorage.setItem('user', user);
+					window.localStorage.setItem('pass', pass);
 
-				window.location = "/home";
-				return;
-			}
-			else {
-				console.log("login failed");
+					window.location = "/home";
+					return resolve(true);
+				}
+				else {
+					console.log("login failed");
 
-				//TODO username or password was incorrect, tell the user
+					//TODO username or password was incorrect, tell the user
 
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
 }
 
 //get an array of the username's lists
@@ -151,7 +155,7 @@ function deleteList(listName) {
 
 }
 
-//creates a blank list listName -- returns true if successful, false if failed
+//TODO TEST PROMISE   creates a blank list listName -- returns true if successful, false if failed
 function createList(listName) {
 	var props = {
 		method: 'POST',
@@ -163,24 +167,26 @@ function createList(listName) {
 		})
 	};
 
-	fetch(BASE_URL + '/lists/create', props)
-		.then(function(response) {
-			if (response.ok) {
-				console.log("list was successfully created");
-				return true;
-			}
-			else {
-				console.log("creation failed");
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/lists/create', props)
+			.then(function(response) {
+				if (response.ok) {
+					console.log("list was successfully created");
+					return resolve(true);
+				}
+				else {
+					console.log("creation failed");
 
-				//TODO adding failed, send some error message
+					//TODO adding failed, send some error message
 
-				return false;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return false;
-		});
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
 }
 
 //returns the listName list object
@@ -189,23 +195,29 @@ function getList(listName) {
 		method: 'GET'
 	};
 
-	fetch(BASE_URL + `/lists/get?listName={listName}`, props)
-		.then(function(list) {
-			if (list.ok) {
-				return list;
-			}
-			else {
-				console.log("couldn't get the list ");
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + `/lists/get?listName={listName}`, props)
+			.then(function(response) {
+				if (response.ok) {
+					response.json().then(function(list) {
+						if (list.ok) {
+							return list;
+						}
+						else {
+							console.log("couldn't get the list ");
 
-				//TODO couldn't get the list for some reason, display an error message
+							//TODO couldn't get the list for some reason, display an error message
 
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
+							return;
+						}
+					}).catch(function(err) {
+							console.log("there was a network error");
+							console.log(err);
+							return;
+					});
+				}
+			});
+	});
 }
 
 //adds an itme with all of the required attributes to the listName
