@@ -19,7 +19,7 @@ function create_button(listname) {
 
 function create_all_buttons() {
     username = localStorage.getItem("user");
-		password = localStorage.getItem("pass");
+	password = localStorage.getItem("pass");
     //var lists = getUserLists(username, password);
 
 		getUserLists(username, password)
@@ -28,7 +28,10 @@ function create_all_buttons() {
 		        create_button(lists[i]);
 		        //add_style(i);
 	    	}
-			});
+            }).catch(function(err) {
+                console.log("there was a error");
+                console.log("Error: " + err);
+        });
 }
 
 function newElement() {

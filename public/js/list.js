@@ -8,13 +8,20 @@ function test() {
     var res = url.split("=");
     var list = res[1];  
     console.log(list);
-    create_table(list);
+
+    getList(list)
+    .then(function (list1) {
+        create_table(list1);
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
 }
 
 function create_table(list1) {
     //example of input
 	var table = '';
-	var list = getList(list1);
+	var list = list1;
     var rows = list.items.length + 1;
     var cols = 4;
     var i = -1;
@@ -67,15 +74,7 @@ function newItem() {
 	create_button(length);
 }
 
-function deleteCurrentList() {
-    if (confirm("Are you sure you want to delete?") == true) {
-        var url = window.location.toString();
-        var res = url.split("=");
-        var list = res[1];  
-        console.log(list);
-        deleteList(list);
-        window.location = "/home";
-    } 
+function delItem() {
 	//deleteList
 }
 
