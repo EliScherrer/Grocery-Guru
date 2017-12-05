@@ -209,19 +209,19 @@ function getList(listName) {
 				if (response.ok) {
 					response.json().then(function(list) {
 						if (list.ok) {
-							return list;
+							return resolve(list);
 						}
 						else {
 							console.log("couldn't get the list ");
 
 							//TODO couldn't get the list for some reason, display an error message
 
-							return;
+							return reject(false);
 						}
 					}).catch(function(err) {
 							console.log("there was a network error");
 							console.log(err);
-							return;
+							return reject(false);
 					});
 				}
 			});
@@ -244,24 +244,26 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 		})
 	};
 
-	fetch(BASE_URL + '/lists/add', props)
-		.then(function(response) {
-			if (response.ok) {
-				console.log("item was successfully added");
-				return;
-			}
-			else {
-				console.log("creation failed");
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/lists/add', props)
+			.then(function(response) {
+				if (response.ok) {
+					console.log("item was successfully added");
+					return resolve(true);
+				}
+				else {
+					console.log("creation failed");
 
-				//TODO adding failed, send some error message
+					//TODO adding failed, send some error message
 
-				return;
-			}
-		}).catch(function(err) {
-				console.log("there was a network error");
-				console.log(err);
-				return;
-		});
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
 }
 
 //TODO needs to be done
