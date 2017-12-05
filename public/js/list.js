@@ -6,7 +6,7 @@ function body_onLoad() {
 function test() {
     var url = window.location.toString();
     var res = url.split("=");
-    var list = res[1];  
+    var list = res[1];
     console.log(list);
 
     getList(list)
@@ -40,7 +40,7 @@ function create_table(list1) {
                     table += '<th>' + "Type" + '</th>';
                 }
                 else if (c == 3) {
-                    table += '<th>' + "Aquired" + '</th>';
+                    table += '<th>' + "Acquired" + '</th>';
                 }
             }
             else {
@@ -55,7 +55,7 @@ function create_table(list1) {
                     table += '<td>' + list.items[r-1].genre + '</td>';
                 }
                 else if (c == 3) {
-                    table += '<td>' + list.items[r-1].aquired + '</td>';
+                    table += '<td>' + list.items[r-1].acquired + '</td>';
                 }
             }
         }
@@ -80,15 +80,15 @@ function delItem() {
 
 function addFriend() {
 	var FriendName = document.getElementById("Friend").value;
-	//var listName = 
+	//var listName =
 	addListToUser(listName, "Friend");
 }
 
 function newFriend() {
-    
+
 }
 
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myDropList() {
     document.getElementById("myDropdown").classList.toggle("show");

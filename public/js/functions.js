@@ -231,26 +231,24 @@ function getList(listName) {
 		method: 'GET'
 	};
 
+	console.log("listname: " + listName);
+	console.log(BASE_URL + `/lists/get?listName=${listName}`);
+
 	return new Promise((resolve, reject) => {
 		fetch(BASE_URL + `/lists/get?listName=${listName}`, props)
 			.then(function(response) {
 				if (response.ok) {
 					response.json().then(function(list) {
-						if (list.ok) {
 							return resolve(list);
-						}
-						else {
-							console.log("couldn't get the list ");
 
-							//TODO couldn't get the list for some reason, display an error message
-
-							return reject(false);
-						}
 					}).catch(function(err) {
 							console.log("there was a network error");
 							console.log(err);
 							return reject(false);
 					});
+				}
+				else {
+					return reject(false);
 				}
 			});
 	});
