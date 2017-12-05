@@ -31,7 +31,7 @@ function create_all_buttons() {
             }).catch(function(err) {
                 console.log("there was a error");
                 console.log("Error: " + err);
-        });
+            });
 }
 
 function newElement() {
