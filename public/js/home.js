@@ -40,3 +40,13 @@ function newElement() {
         addListToUser(inputValue, localStorage.getItem(user));
     }
   }
+
+  function addFriend() {
+	var FriendName = document.getElementById("Friend").value;
+	//var listName = 
+	addListToUser(listName, "Friend");
+}
+
+function newFriend() {
+    
+}
