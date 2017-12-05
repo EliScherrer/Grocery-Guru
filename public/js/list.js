@@ -67,7 +67,14 @@ function newItem() {
 	create_button(length);
 }
 
-function delItem() {
+function deleteCurrentList() {
+    if (confirm("Are you sure you want to delete?") == true) {
+        var url = window.location.toString();
+        var res = url.split("=");
+        var list = res[1];  
+        console.log(list);
+        //deleteList(list);
+    } 
 	//deleteList
 }
 
