@@ -37,7 +37,7 @@ body {
 	position: absolute;
 	left: 50px;
 	top: 120px;
-	width: 150px;
+	width: 150;
 	height: 30px;
 	font-size: 18px;
 	background: #eff1f1;
@@ -100,7 +100,7 @@ body {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #2bb3bd;
+	background: #e62525;
 	border: 1px solid #f8f7f6;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -178,71 +178,3 @@ body {
     color: white;
 }
 
-/*
-h1{
-	background-color: rgb(20, 78, 236);
-	padding: 30px 35px;
-	margin: auto;
-	text-align:left;
-}
-div.left{
-	background-color: rgb(20, 78, 236);
-	width: 25%;
-	margin: 10px auto;
-	text-align:center;
-	float:left
-}
-div.right{
-	background-color: rgb(20, 78, 236);
-	width: 25%;
-	margin: 10px auto;
-	text-align:center;
-	float:right;
-}
-
-#ingredients {
-	clear: both;
-	width: 100%;
-	padding: 25px;
-}
-
-#ingredients td, #ingredients th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#ingredients tr:hover {
-	background-color: #ddd;
-}
-
-#ingredients th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(20, 78, 236);
-    color: white;
-}
-
-#completed_ingredients {
-	clear: both;
-	width: 100%;
-	padding: 25px;
-}
-
-#completed_ingredients td, #completed_ingredients th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#completed_ingredients tr:hover {
-	background-color: #ddd;
-}
-
-#completed_ingredients th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(20, 78, 236);
-    color: white;
-}
-*/
