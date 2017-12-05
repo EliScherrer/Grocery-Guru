@@ -157,10 +157,38 @@ function addFriendToList(username, friend) {
 
 ************************************************/
 
-//TODO delete a list
+//delete a list
 function deleteList(listName) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			listName: listName
+		})
+	};
 
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/lists/remove', props)
+			.then(function(response) {
+				if (response.ok) {
+					console.log("list was successfully removed");
+					return resolve(true);
+				}
+				else {
+					console.log("removal failed");
 
+					//TODO adding failed, send some error message
+
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
 }
 
 //TODO TEST PROMISE   creates a blank list listName -- returns true if successful, false if failed
@@ -266,7 +294,37 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 	});
 }
 
-//TODO needs to be done
-function delItemToList(listName, itemName, quantity, genre, acquired) {
+//deletes the specified itemName from the listName
+function deleteItemFromList(listName, itemName) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			listName: listName,
+			itemName: itemName
+		})
+	};
 
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/lists/item/remove', props)
+			.then(function(response) {
+				if (response.ok) {
+					console.log("item was successfully removed");
+					return resolve(true);
+				}
+				else {
+					console.log("removal failed");
+
+					//TODO adding failed, send some error message
+
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
 }
