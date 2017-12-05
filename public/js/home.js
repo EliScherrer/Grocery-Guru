@@ -38,21 +38,21 @@ function newList() {
     var inputValue = document.getElementById("myInput").value;
     //get users list and also make sure that this list doesn't already exist
     if(inputValue != "") {
-        createList(inputValue) 
+        createList(inputValue)
             .then(function (result) {
-                addListToUser(inputValue, localStorage.getItem(user))
-                    .then(function (result) {
-                        return create_button(inputValue);     
+                addListToUser(inputValue, localStorage.getItem("user"))
+                    .then(function (result2) {
+                        return create_button(inputValue);
                     }).catch(function(err) {
                         console.log("there was a error");
                         console.log("Error: " + err);
-                    });   
+                    });
         }).catch(function(err) {
              console.log("there was a error");
              console.log("Error: " + err);
         });
 
-        
+
     }
   }
 

@@ -205,9 +205,9 @@ app.post('/users/friends/remove', (req, res) => {
 
 //add a grocery list to the user's lists
 app.post('/users/lists/add', (req, res) => {
-	var body = _.pick(req.body, ['username', 'password', 'listName']);
+	var body = _.pick(req.body, ['username', 'listName']);
 	//first find the logged in user
-	User.findByCredentials(body.username, body.password)
+	User.findByName(body.username)
 		.then((user) => {
 
 			//make sure that user doesn't already have that list listed

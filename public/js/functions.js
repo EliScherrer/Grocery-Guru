@@ -141,7 +141,7 @@ function getUserLists(username, password) {
 }
 
 //add the listName to the username's lists
-function addListToUser(listName, username, password) {
+function addListToUser(listName, username) {
 
 	var props = {
 		method: 'POST',
@@ -150,10 +150,12 @@ function addListToUser(listName, username, password) {
 		},
 		body: JSON.stringify({
 			username: username,
-			password: password,
 			listName: listName
 		})
 	};
+
+	console.log("passed username: " + username);
+	console.log("passed listname: " + listName);
 
 	return new Promise((resolve, reject) => {
 		fetch(BASE_URL + '/users/lists/add', props)
@@ -162,7 +164,6 @@ function addListToUser(listName, username, password) {
 					return resolve(true);
 				}
 				else {
-					console.log("retrieval failed");
 					return reject("add failed");
 				}
 			}).catch(function(err) {
