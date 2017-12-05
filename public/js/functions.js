@@ -140,9 +140,37 @@ function getUserLists(username, password) {
 	 });
 }
 
-//TODO add the listName to the username's lists
-function addListToUser(listName, username) {
+//add the listName to the username's lists
+function addListToUser(listName, username, password) {
 
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password,
+			listName: listName
+		})
+	};
+
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/lists/add', props)
+			.then(function(response) {
+				if (response.ok) {
+					return resolve(true);
+				}
+				else {
+					console.log("retrieval failed");
+					return reject("add failed");
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject("there was a network error");
+			});
+	 });
 }
 
  //TODO Delete user from list
@@ -195,7 +223,7 @@ function deleteList(listName) {
 	});
 }
 
-//TODO TEST PROMISE   creates a blank list listName -- returns true if successful, false if failed
+//creates a blank list listName -- returns true if successful, false if failed
 function createList(listName) {
 	var props = {
 		method: 'POST',
