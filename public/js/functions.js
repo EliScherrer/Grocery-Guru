@@ -204,7 +204,7 @@ function getList(listName) {
 	};
 
 	return new Promise((resolve, reject) => {
-		fetch(BASE_URL + `/lists/get?listName={listName}`, props)
+		fetch(BASE_URL + `/lists/get?listName=${listName}`, props)
 			.then(function(response) {
 				if (response.ok) {
 					response.json().then(function(list) {
