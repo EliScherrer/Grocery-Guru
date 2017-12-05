@@ -275,7 +275,7 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 	};
 
 	return new Promise((resolve, reject) => {
-		fetch(BASE_URL + '/lists/add', props)
+		fetch(BASE_URL + '/lists/item/add', props)
 			.then(function(response) {
 				if (response.ok) {
 					console.log("item was successfully added");
