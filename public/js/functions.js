@@ -1,7 +1,8 @@
 var BASE_URL = "https://mysterious-inlet-94873.herokuapp.com";
 var FOOD_API_URL = "https://api.edamam.com/search";
 var app_id = "3cc3441e";
-var app_key = "b0afaec470edd447aa0adeb3a742781";
+var app_key = "cb0afaec470edd447aa0adeb3a742781";
+//var app_key = "b0afaec470edd447aa0adeb3a742781";
 /**********************************************
 
 	 functions for doing things with the user
