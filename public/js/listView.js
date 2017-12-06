@@ -97,8 +97,8 @@ function deleteCurrentList() {
     var list = res[1];
     username = localStorage.getItem("user");
     if(confirm("Are you sure you want to delete?") == true) {
-        deleteList(listName).then(function (result) {
-            delListFromUser(listName, username).then(function (result) {
+        deleteList(list).then(function (result) {
+            delListFromUser(list, username).then(function (result) {
                 windows.location = "/home";
             }).catch(function(err) {
                 console.log("there was a error delUserFromList");
