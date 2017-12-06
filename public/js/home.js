@@ -56,8 +56,16 @@ function newList() {
     }
   }
 
-
-function newFriend() {
-    var friendName = document.getElementById("Friend").value;
-    addFriendToList( username = localStorage.getItem("user"), friendName)
+  function newFriend() {
+	var FriendName = document.getElementById("Friend").value;
+	var url = window.location.toString();
+    var res = url.split("=");
+    var list = res[1];
+	addListToUser(list, FriendName).then(function (list) {
+        populateFriendList(list);
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
 }
+
