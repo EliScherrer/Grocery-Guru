@@ -257,7 +257,8 @@ function getFriendsList(username, password) {
 			.then(function(response) {
 				if (response.ok) {
 					response.json().then(function(friends) {
-							return resolve(friends);
+						console.log(friends);	
+						return resolve(friends);
 					}).catch(function(err) {
 							console.log("there was a network error");
 							console.log(err);

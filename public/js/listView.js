@@ -105,10 +105,32 @@ function newFriend() {
 
 }
 
+function populateFriendList(list1) {
+    var list = list1;
+    var len = list.length;
+    var x = document.getElementById("myDropdown");
+    for (var i = 0; i < len; i++) {
+        var option = document.createElement('a');
+        option.setAttribute('href', "test.html")
+        option.innerHTML = list1[i];
+        x.appendChild(option);
+    }
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myDropList() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    username = localStorage.getItem("user");
+    password = localStorage.getItem("pass");
+    getFriendsList(username, password)
+    .then(function (list) {
+        populateFriendList(list);
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
+    //document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
