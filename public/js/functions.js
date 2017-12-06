@@ -231,6 +231,46 @@ function delListFromUser(listName, username) {
 	 });
 }
 
+/**********************************************
+
+	     description-> get a user's friends
+			 returns-> array of strings (friends' usernames)
+
+************************************************/
+function getFriendsList(username, password) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password
+		})
+	};
+
+	console.log("passed username: " + username);
+	console.log("passed password: " + password);
+
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/friends', props)
+			.then(function(response) {
+				if (response.ok) {
+					response.json().then(function(friends) {
+							return resolve(friends);
+					}).catch(function(err) {
+							console.log("there was a network error");
+							console.log(err);
+							return reject(false);
+					});
+				}
+				else {
+					return reject(false);
+				}
+			});
+	 });
+}
+
 
 /**********************************************
 
