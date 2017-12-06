@@ -47,7 +47,8 @@ function create_table(list1) {
                 //i++;
                 if (c == 0) {
                     imageName = list[r-1].image;
-                    table += '<td><img src=' + imageName + 'alt="" border=3 height=100 width=100></img></td>';
+                    console.log(imageName);
+                    table += '<td><img src=' + imageName + ' border=3 height=100 width=100></img></td>';
                 }
                 else if (c == 1) {
                     table += '<td>' + list[r-1].name + '</td>';
