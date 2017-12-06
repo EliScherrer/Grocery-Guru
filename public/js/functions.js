@@ -234,21 +234,81 @@ function delListFromUser(listName, username) {
 
 /**********************************************
 
-	   TODO add a friend to friend's list
+	      add a friend to friend's list
 
 ************************************************/
-function addFriendToList(username, friend) {
+function addFriendToList(username, password, friend) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password,
+			friend: friend
+		})
+	};
 
+	console.log("passed username: " + username);
+	console.log("passed password: " + password);
+	console.log("passed friend: " + friend);
+
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/friends/add', props)
+			.then(function(response) {
+				if (response.ok) {
+					return resolve(true);
+				}
+				else {
+					return reject("add failed");
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject("there was a network error");
+			});
+	 });
 }
 
 
 /**********************************************
 
-	   TODO remove a friend from friend's list
+	    remove a friend from friend's list
 
 ************************************************/
-function addFriendToList(username, friend) {
+function removeFriendFromList(username, password, friend) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: username,
+			password: password,
+			friend: friend
+		})
+	};
 
+	console.log("passed username: " + username);
+	console.log("passed password: " + password);
+	console.log("passed friend: " + friend);
+
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/friends/remove', props)
+			.then(function(response) {
+				if (response.ok) {
+					return resolve(true);
+				}
+				else {
+					return reject("removal failed");
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject("there was a network error");
+			});
+	 });
 }
 
 
