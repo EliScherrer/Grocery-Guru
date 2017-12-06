@@ -1,6 +1,6 @@
 function getRecipes() {
-    var search = "chicken";
-    var q = 5;
+    var search = document.getElementById("Search").value;
+    var q = document.getElementById("Number").value;
     //var res = url.split("=");
     //var list = res[1];
     //console.log(list);
