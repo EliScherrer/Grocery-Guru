@@ -25,6 +25,7 @@ function create_table(list1) {
     var i = -1;
     var imageName = '';
     var allIngredients = '';
+    var link = '';
     for (var r = 0; r < rows; r++) {
         table += '<tr>';
         //cols = total[r].all.length;
@@ -45,13 +46,14 @@ function create_table(list1) {
             }
             else {
                 //i++;
+                link = list[r-1].link;
                 if (c == 0) {
                     imageName = list[r-1].image;
                     console.log(imageName);
-                    table += '<td><img src=' + imageName + ' border=3 height=100 width=100></img></td>';
+                    table += '<td><a href="' + link + '"><img src=' + imageName + ' border=3 height=100 width=100></img></a></td>';
                 }
                 else if (c == 1) {
-                    table += '<td>' + list[r-1].name + '</td>';
+                    table += '<td><a href="' + link + '">' + list[r-1].name + '</a></td>';
                 }
                 else if (c == 2) {
                     allIngredients = list[r-1].ingredients.toString();
