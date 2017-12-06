@@ -131,6 +131,9 @@ function populateFriendList(list1) {
     var list = list1;
     var len = list.length;
     var x = document.getElementById("myDropdown");
+    while(x.firstChild){
+        x.removeChild(x.firstChild);
+    }
     for (var i = 0; i < len; i++) {
         var option = document.createElement('a');
         option.setAttribute('href', "test.html")
