@@ -9,7 +9,12 @@ var app_key = "cb0afaec470edd447aa0adeb3a742781";
 
 ************************************************/
 
-//create a new user
+
+/**********************************************
+
+	             create a new user
+
+************************************************/
 function createUser() {
 	var user = document.getElementById("username").value;
 	var pass = document.getElementById("password").value;
@@ -52,7 +57,11 @@ function createUser() {
 		});
 }
 
-//login a user
+/**********************************************
+
+	             login a user
+
+************************************************/
 function validateUser() {
   var user = document.getElementById("username").value;
   var pass = document.getElementById("password").value;
@@ -96,7 +105,11 @@ function validateUser() {
 	});
 }
 
-//get an array of the username's lists
+/**********************************************
+
+	    get an array of the username's lists
+
+************************************************/
 function getUserLists(username, password) {
 	//get the username and password that were saved to local storage when the user loged in
 	// username = localStorage.getItem("user");
@@ -141,7 +154,12 @@ function getUserLists(username, password) {
 	 });
 }
 
-//add the listName to the username's lists
+
+/**********************************************
+
+	 add the listName to the username's lists
+
+************************************************/
 function addListToUser(listName, username) {
 
 	var props = {
@@ -175,15 +193,29 @@ function addListToUser(listName, username) {
 	 });
 }
 
- //TODO Delete user from list
+
+ /**********************************************
+
+ 	       TODO Delete list from a user's lists
+
+ ************************************************/
  function delListFromUser(listName, username) {
 
 }
 
-//TODO add a friend to friend's list
+
+/**********************************************
+
+	   TODO add a friend to friend's list
+
+************************************************/
 function addFriendToList(username, friend) {
 
 }
+
+
+
+
 
 /**********************************************
 
@@ -191,7 +223,16 @@ function addFriendToList(username, friend) {
 
 ************************************************/
 
-//delete a list
+
+
+
+
+
+/**********************************************
+
+	              delete a list
+
+************************************************/
 function deleteList(listName) {
 	var props = {
 		method: 'POST',
@@ -225,7 +266,15 @@ function deleteList(listName) {
 	});
 }
 
-//creates a blank list listName -- returns true if successful, false if failed
+/**********************************************
+
+	   description-> creates a blank list
+
+		 params-> listName = the name of the new list
+		 returns-> succesful = true
+		 					 failure = false
+
+************************************************/
 function createList(listName) {
 	var props = {
 		method: 'POST',
@@ -259,7 +308,12 @@ function createList(listName) {
 	});
 }
 
-//returns the listName list object
+
+/**********************************************
+
+description-> returns the "listName" list object
+
+************************************************/
 function getList(listName) {
 	var props = {
 		method: 'GET'
@@ -288,7 +342,11 @@ function getList(listName) {
 	});
 }
 
-//adds an itme with all of the required attributes to the listName
+/**********************************************
+
+        adds an item to the listName
+
+************************************************/
 function addItemToList(listName, itemName, quantity, genre, acquired) {
 	var props = {
 		method: 'POST',
@@ -326,7 +384,12 @@ function addItemToList(listName, itemName, quantity, genre, acquired) {
 	});
 }
 
-//deletes the specified itemName from the listName
+
+/**********************************************
+
+deletes the specified itemName from the listName
+
+************************************************/
 function deleteItemFromList(listName, itemName) {
 	var props = {
 		method: 'POST',
@@ -361,11 +424,16 @@ function deleteItemFromList(listName, itemName) {
 	});
 }
 
+
+
 /**********************************************
 
 	 functions for using the recipe and food apis
 
 ************************************************/
+
+
+
 
 //https://api.edamam.com/search?q=chicken&app_id=3cc3441e&app_key=cb0afaec470edd447aa0adeb3a742781&to=5
 function getRecipe(recipe, numResults) {
@@ -416,8 +484,4 @@ function getRecipe(recipe, numResults) {
 					return reject(false);
 			});
 	});
-
-
-
-
 }
