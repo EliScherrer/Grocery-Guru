@@ -563,6 +563,50 @@ function deleteItemFromList(listName, itemName) {
 	});
 }
 
+/**********************************************
+
+  TODO  changes an itemName in the listName
+
+************************************************/
+function changeItemInList(listName, itemName, quantity, genre, acquired) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			listName: listName,
+			itemName: itemName,
+			quantity: quantity,
+			genre: genre,
+			acquired: acquired
+		})
+	};
+
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/lists/item/change', props)
+			.then(function(response) {
+				if (response.ok) {
+					console.log("item was successfully changed");
+					return resolve(true);
+				}
+				else {
+					console.log("change failed");
+
+					//TODO changing failed, send some error message
+
+					return reject(false);
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject(false);
+			});
+	});
+}
+
+
+
 
 
 /**********************************************

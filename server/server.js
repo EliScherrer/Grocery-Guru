@@ -416,6 +416,47 @@ app.post('/lists/item/remove', (req, res) => {
 
 
 //TODO change item on list
+app.post('/lists/item/change', (req, res) => {
+	var body = _.pick(req.body, ['listName']);
+	var item = _.pick(req.body, ['itemName', 'quantity', 'genre', 'acquired']);
+	console.log(item);
+
+	//TODO do some error checking here to make sure all the fields are there and have valid values
+	if (body.listName === undefined || body.listName === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.itemName === undefined || item.itemName === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.quantity === undefined || item.quantity === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.genre === undefined || item.genre === null) {
+		res.status(400).send("missing parameters");
+	}
+	else if (item.acquired === undefined || item.acquired === null) {
+		res.status(400).send("missing parameters");
+	}
+	//TODO change this next part, it was just copied and pasted
+	else {
+		List.findOneAndUpdate(
+			{ "listName" : body.listName },
+			{ $push: { items: item } },
+			{ new: true },
+			function (err, doc) {
+				if (err) {
+					console.log("didn't work?");
+					console.log(err);
+					res.status(400).send(err);
+				}
+				else {
+					console.log(doc);
+					res.status(200).send(doc);
+				}
+			}
+		);
+	}
+});
 
 
 
