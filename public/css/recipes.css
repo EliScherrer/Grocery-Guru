@@ -22,6 +22,51 @@ body {
 	background-color:#2bb3bd; 
 }
 
+#Search {
+	position: absolute;
+	left: 210px;
+	top: 120px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#Number {
+	position: absolute;
+	left: 320px;
+	top: 120px;
+	width: 150px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.searchBtn {
+	position: absolute;
+	left: 500px;
+	top: 120px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #2bb3bd;
+	border: 1px solid #f8f7f6;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
 #recipes {
 	position: absolute;
 	top: 150px;
