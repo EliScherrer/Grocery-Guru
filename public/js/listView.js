@@ -91,19 +91,41 @@ function newItem() {
 
 }
 
-function delItem() {
-	//deleteList
+function deleteCurrentList() {
+    var url = window.location.toString();
+    var res = url.split("=");
+    var list = res[1];
+    username = localStorage.getItem("user");
+    if(confirm("Are you sure you want to delete?") == true) {
+        deleteList(listName).then(function (result) {
+            delListFromUser(listName, username).then(function (result) {
+                windows.location = "/home";
+            }).catch(function(err) {
+                console.log("there was a error delUserFromList");
+                console.log("Error: " + err);
+                        return;
+            });
+        }).catch(function(err) {
+            console.log("there was a error delList");
+            console.log("Error: " + err);
+                    return;
+        });
+    }
 }
 
 function addFriend() {
 	var FriendName = document.getElementById("Friend").value;
-	//var listName =
-	addListToUser(listName, "Friend");
+	var url = window.location.toString();
+    var res = url.split("=");
+    var list = res[1];
+	addListToUser(list, FriendName).then(function (list) {
+        populateFriendList(list);
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
 }
 
-function newFriend() {
-
-}
 
 function populateFriendList(list1) {
     var list = list1;
