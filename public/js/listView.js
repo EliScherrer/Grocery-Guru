@@ -113,7 +113,7 @@ function deleteCurrentList() {
     }
 }
 
-function addFriend() {
+function newFriend() {
 	var FriendName = document.getElementById("Friend").value;
 	var url = window.location.toString();
     var res = url.split("=");
