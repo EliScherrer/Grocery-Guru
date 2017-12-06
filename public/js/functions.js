@@ -157,7 +157,7 @@ function getUserLists(username, password) {
 
 /**********************************************
 
-	 add the listName to the username's lists
+	    add list to the user's lists
 
 ************************************************/
 function addListToUser(listName, username) {
@@ -194,13 +194,41 @@ function addListToUser(listName, username) {
 }
 
 
- /**********************************************
+/**********************************************
 
- 	       TODO Delete list from a user's lists
+ 	      Delete list from a user's lists
 
- ************************************************/
- function delListFromUser(listName, username) {
+************************************************/
+function delListFromUser(listName, username) {
+	var props = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: username,
+			listName: listName
+		})
+	};
 
+	console.log("passed username: " + username);
+	console.log("passed listname: " + listName);
+
+	return new Promise((resolve, reject) => {
+		fetch(BASE_URL + '/users/lists/remove', props)
+			.then(function(response) {
+				if (response.ok) {
+					return resolve(true);
+				}
+				else {
+					return reject("removal failed");
+				}
+			}).catch(function(err) {
+					console.log("there was a network error");
+					console.log(err);
+					return reject("there was a network error");
+			});
+	 });
 }
 
 
@@ -214,6 +242,14 @@ function addFriendToList(username, friend) {
 }
 
 
+/**********************************************
+
+	   TODO remove a friend from friend's list
+
+************************************************/
+function addFriendToList(username, friend) {
+
+}
 
 
 
@@ -231,6 +267,9 @@ function addFriendToList(username, friend) {
 /**********************************************
 
 	              delete a list
+
+
+	!!!!			DON'T USE WITHOUT TALKING TO ELI   !!!!
 
 ************************************************/
 function deleteList(listName) {

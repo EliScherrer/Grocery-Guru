@@ -252,9 +252,9 @@ app.post('/users/lists/add', (req, res) => {
 
 //remove a grocery list from the user's lists
 app.post('/users/lists/remove', (req, res) => {
-	var body = _.pick(req.body, ['username', 'password', 'listName']);
+	var body = _.pick(req.body, ['username', 'listName']);
 
-	User.findByCredentials(body.username, body.password)
+	User.findByName(body.username)
 		.then((user) => {
 			User.update(
 	  		{ "username" : body.username },
