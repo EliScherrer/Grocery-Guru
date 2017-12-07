@@ -56,7 +56,7 @@ function change_row () {
 	var quantity = document.getElementById("c_quantity").value;
     var genre = document.getElementById("c_type").value;
     var acquired = document.getElementById("c_acquired").value;
-    
+
     location.reload();
     var url = window.location.toString();
     console.log(url);
@@ -72,13 +72,14 @@ function change_row () {
             console.log("Error: " + err);
                     return;
         });
-    
+
 }
 
 function create_table(list1) {
     //example of input
-	var table = '';
-	var list = list1;
+		var table = '';
+		var table2 = '';
+		var list = list1;
     var rows = list.items.length + 1;
     var cols = 6;
     var i = -1;
@@ -88,62 +89,104 @@ function create_table(list1) {
         for (var c = 0; c < cols; c++) {
             if (r == 0) {
                 if (c == 0) {
-                    table += '<th>' + "Name" + '</th>';
+                    table += '<th>' + "Ingredient" + '</th>';
+										table2 += '<th>' + "Recipe" + '</th>';
                 }
                 else if (c == 1) {
                     table += '<th>' + "Quantity" + '</th>';
+										table2 += '<th>' + "Ingredients" + '</th>';
                 }
                 else if (c == 2) {
                     table += '<th>' + "Type" + '</th>';
+										table2 += '<th>' + "In Cart" + '</th>';
                 }
                 else if (c == 3) {
-                    table += '<th>' + "Acquired?" + '</th>';
+                    table += '<th>' + "In Cart" + '</th>';
+										table2 += '<th>' + "Delete" + '</th>';
                 }
                 else if (c == 4) {
-                    table += '<th>' + "Delete?" + '</th>';
+                    table += '<th>' + "Delete" + '</th>';
                 }
                 else if (c == 5) {
-                    table += '<th>' + "Edit?" + '</th>';
+                    table += '<th>' + "Edit" + '</th>';
                 }
             }
             else {
-                //i++;
-                var name_i = list.items[r-1].itemName;
-                var name_l = list.listName;
-                var name_q = list.items[r-1].quantity;
-                var name_g = list.items[r-1].genre;
-                var name_a = list.items[r-1].acquired; 
-                if (c == 0) {
-                    table += '<td>' + list.items[r-1].itemName + '</td>';
-                }
-                else if (c == 1) {
-                    table += '<td>' + list.items[r-1].quantity + '</td>';
-                }
-                else if (c == 2) {
-                    table += '<td>' + list.items[r-1].genre + '</td>';
-                }
-                else if (c == 3) {
-                    var kms = "obtained?";
-                    if (list.items[r-1].acquired) {
-                        table += '<td><input type="checkbox" value="checked" checked />' + kms + '</td>';
-                    }
-                    else {
-                        table += '<td><input type="checkbox" value="checked" />' + kms + '</td>';
-                    }
-                }
-                else if (c == 4) {
-                    table += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
-                }
-                else if (c == 5) {
-                    table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i + '\',\'' + name_q + '\',\'' + name_g + '\',\'' + name_a + '\')">Edit</button></td>';
-                    //table += '<td><button onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;">Edit</button></td>';
-                }
+								//if adding an ingredient
+								if (list.items[r-1].genre !== "recipe") {
+	                //i++;
+	                var name_i = list.items[r-1].itemName;
+	                var name_l = list.listName;
+	                if (c == 0) {
+	                    table += '<td>' + list.items[r-1].itemName + '</td>';
+	                }
+	                else if (c == 1) {
+	                    table += '<td>' + list.items[r-1].quantity + '</td>';
+	                }
+	                else if (c == 2) {
+	                    table += '<td>' + list.items[r-1].genre + '</td>';
+	                }
+	                else if (c == 3) {
+	                    var kms = "obtained";
+	                    if (list.items[r-1].acquired) {
+	                        table += '<td><input type="checkbox" value="checked" checked /></td>';
+	                    }
+	                    else {
+	                        table += '<td><input type="checkbox" value="checked" /></td>';
+	                    }
+	                }
+	                else if (c == 4) {
+	                    table += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
+	                }
+	                else if (c == 5) {
+	                    //table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\')">Edit</button></td>';
+	                    table += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
+	                }
+								}
+								//adding a recipe
+								else {
+									//i++;
+	                var name_i = list.items[r-1].itemName;
+	                var name_l = list.listName;
+	                if (c == 0) {
+	                    table2 += '<td>' + list.items[r-1].itemName + '</td>';
+	                }
+	                else if (c == 1) {
+	                    table2 += '<td>' + list.items[r-1].quantity + '</td>';
+	                }
+	                else if (c == 2) {
+										if (list.items[r-1].acquired) {
+												table2 += '<td><input type="checkbox" value="checked" checked /></td>';
+										}
+										else {
+												table2 += '<td><input type="checkbox" value="checked" /></td>';
+										}
+	                }
+	                else if (c == 3) {
+	                    var kms = "obtained?";
+											table2 += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
+	                }
+	                // else if (c == 4) {
+	                //     table2 += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
+	                // }
+	                // else if (c == 5) {
+	                //     //table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\')">Edit</button></td>';
+	                //     table2 += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
+	                // }
+								}
+
+
+
+
             }
         }
         table += '</tr>';
+				table2 += '</tr>';
     }
     var node = document.getElementById("ingredients");
     node.innerHTML = table;
+		var node2 = document.getElementById("recipes");
+    node2.innerHTML = table2;
 }
 
 function newItem() {
@@ -257,7 +300,7 @@ function myDropList() {
 }
 
 // Close the dropdown menu if the user clicks outside of it
-/* 
+/*
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
