@@ -160,22 +160,20 @@ function add_Friend_To_List(name) {
 
 function populateFriendList(list1) {
     var list = list1;
-    var len = list.length;
-    var x = document.getElementById("myDropdown");
-    
-    //var node = document.getElementById("myDropdown");
+    var len = list.length;    
+    var node = document.getElementById("myDropdown");
     var fin = '';
-    while(x.firstChild){
-        x.removeChild(x.firstChild);
+    while(node.firstChild){
+        node.removeChild(node.firstChild);
     }
     for (var i = 0; i < len; i++) {
         var name = list[i];
-        fin += '<a href="#" onclick="add_Friend_To_List(\'' + name + '\')>' + name + '</a>';
-                      
+        fin = '<a href="" onclick="add_Friend_To_List(\'' + name + '\')">' + name + '</a>';          
+        node.innerHTML = fin;
     }
-    c.innerHTML=fin;
-    x.appendChild(n);
-    //document.getElementById("myDropdown").classList.toggle("show");
+    console.log(fin);
+    
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
 /* When the user clicks on the button,
@@ -190,11 +188,10 @@ function myDropList() {
         console.log("there was a error");
         console.log("Error: " + err);
     });
-    document.getElementById("myDropdown").classList.toggle("show");
+    //document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
-/*
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -207,4 +204,3 @@ window.onclick = function(event) {
     }
   }
 }
-*/
