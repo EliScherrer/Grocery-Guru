@@ -1,6 +1,16 @@
 function body_onLoad() {
 	getTheList();
+
+	//var btn = document.getElementById("btnRecipes");
+	//btn.onclick = goToAddRecipe();
 	//create_table();
+}
+
+function goToAddRecipe() {
+	var url = window.location.toString();
+	var res = url.split("=");
+	var list = res[1];
+	window.location.href= `/recipesadd?listName=${list}`;
 }
 
 function getTheList() {
@@ -18,7 +28,7 @@ function getTheList() {
 	    });
 }
 
-function delete_Item(listName, itemName ) {
+function delete_Item(listName, itemName) {
     deleteItemFromList(listName, itemName)
     .then(function (result) {
         location.reload();
@@ -125,7 +135,7 @@ function deleteCurrentList() {
                     return;
         });
         deleteList(list).then(function (result) {
-            window.location.href='./home.html';
+            window.location.href='/home';
             return;
         }).catch(function(err) {
             console.log("there was a error delUserFromList");

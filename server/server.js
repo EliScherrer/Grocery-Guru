@@ -52,7 +52,7 @@ app.get('/recipes', function(req, res) {
 });
 
 //add recipes
-app.get('/recipes/add', function(req, res) {
+app.get('/recipesadd', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/addRecipe.html'));
 });
 
@@ -364,19 +364,19 @@ app.post('/lists/item/add', (req, res) => {
 	console.log(item);
 
 	//TODO do some error checking here to make sure all the fields are there and have valid values
-	if (body.listName === undefined || body.listName === null) {
+	if (body.listName === undefined || body.listName === null || body.listName === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.itemName === undefined || item.itemName === null) {
+	else if (item.itemName === undefined || item.itemName === null || item.itemName === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.quantity === undefined || item.quantity === null) {
+	else if (item.quantity === undefined || item.quantity === null || item.quantity === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.genre === undefined || item.genre === null) {
+	else if (item.genre === undefined || item.genre === null || item.genre === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.acquired === undefined || item.acquired === null) {
+	else if (item.acquired === undefined || item.acquired === null || item.acquired === '') {
 		res.status(400).send("missing parameters");
 	}
 	else {
@@ -430,22 +430,21 @@ app.post('/lists/item/change', (req, res) => {
 	console.log(item);
 
 	//TODO do some error checking here to make sure all the fields are there and have valid values
-	if (body.listName === undefined || body.listName === null) {
+	if (body.listName === undefined || body.listName === null || body.listName === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.itemName === undefined || item.itemName === null) {
+	else if (item.itemName === undefined || item.itemName === null || item.itemName === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.quantity === undefined || item.quantity === null) {
+	else if (item.quantity === undefined || item.quantity === null || item.quantity === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.genre === undefined || item.genre === null) {
+	else if (item.genre === undefined || item.genre === null || item.genre === '') {
 		res.status(400).send("missing parameters");
 	}
-	else if (item.acquired === undefined || item.acquired === null) {
+	else if (item.acquired === undefined || item.acquired === null || item.acquired === '') {
 		res.status(400).send("missing parameters");
 	}
-	//TODO change this next part, it was just copied and pasted
 	else {
 		console.log(item.itemName);
 		List.update(
