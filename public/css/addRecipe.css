@@ -91,3 +91,8 @@ body {
     background-color: #9BC4BC;
     color: white;
 }
+
+.addButton {
+	height: fill;
+	width: fill;
+}
