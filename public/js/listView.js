@@ -18,12 +18,23 @@ function getTheList() {
 	    });
 }
 
+function delete_Item(listName, itemName ) {
+    deleteItemFromList(listName, itemName)
+    .then(function (result) {
+        return;
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
+    location.reload();
+}
+
 function create_table(list1) {
     //example of input
 	var table = '';
 	var list = list1;
     var rows = list.items.length + 1;
-    var cols = 4;
+    var cols = 5;
     var i = -1;
     for (var r = 0; r < rows; r++) {
         table += '<tr>';
@@ -40,11 +51,16 @@ function create_table(list1) {
                     table += '<th>' + "Type" + '</th>';
                 }
                 else if (c == 3) {
-                    table += '<th>' + "Acquired" + '</th>';
+                    table += '<th>' + "Acquired?" + '</th>';
+                }
+                else if (c == 4) {
+                    table += '<th>' + "Delete?" + '</th>';
                 }
             }
             else {
                 //i++;
+                var name_i = list.items[r-1].itemName;
+                var name_l = list.listName;
                 if (c == 0) {
                     table += '<td>' + list.items[r-1].itemName + '</td>';
                 }
@@ -62,6 +78,9 @@ function create_table(list1) {
                     else {
                         table += '<td><input type="checkbox" value="checked" />' + kms + '</td>';
                     }
+                }
+                else if (c == 4) {
+                    table += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
                 }
             }
         }
@@ -126,21 +145,37 @@ function newFriend() {
     });
 }
 
+function add_Friend_To_List(name) {
+    username = localStorage.getItem("user");
+    password = localStorage.getItem("pass");
+    addFriendToList(username, password, name)
+    .then(function (add) {
+        
+        return;
+    }).catch(function(err) {
+        console.log("there was a error");
+        console.log("Error: " + err);
+    });
+}
 
 function populateFriendList(list1) {
     var list = list1;
     var len = list.length;
     var x = document.getElementById("myDropdown");
+    
+    //var node = document.getElementById("myDropdown");
+    var fin = '';
     while(x.firstChild){
         x.removeChild(x.firstChild);
     }
     for (var i = 0; i < len; i++) {
-        var option = document.createElement('a');
-        option.setAttribute('href', "test.html")
-        option.innerHTML = list1[i];
-        x.appendChild(option);
+        var name = list[i];
+        fin += '<a href="#" onclick="add_Friend_To_List(\'' + name + '\')>' + name + '</a>';
+                      
     }
-    document.getElementById("myDropdown").classList.toggle("show");
+    c.innerHTML=fin;
+    x.appendChild(n);
+    //document.getElementById("myDropdown").classList.toggle("show");
 }
 
 /* When the user clicks on the button,
@@ -155,13 +190,13 @@ function myDropList() {
         console.log("there was a error");
         console.log("Error: " + err);
     });
-    //document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
+/*
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -172,3 +207,4 @@ window.onclick = function(event) {
     }
   }
 }
+*/
