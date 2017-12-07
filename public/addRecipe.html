@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Recipes</title>
+        <link rel="stylesheet" href="./css/addRecipe.css"/>
+		<script type = "text/javascript" src="./js/addRecipe.js"></script>
+		<script type = "text/javascript" src="./js/functions.js"></script>
+    </head>
+
+    <body>
+        <div id="divStart">
+            <label id="lblGroceryGuruHomeTitle"><a href="./home.html">Grocery Guru</a></label>
+            <input type="text" id="Search" placeholder="Search...">
+            <input type="text" id="Number" placeholder="Number...">
+            <span onclick="getRecipes()" class="searchBtn">Search</span>
+        </div>
+        <div id="divTable">
+            <table id="recipes"></table>
+        </div>
+
+    </body>
+
+</html>

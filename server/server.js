@@ -25,19 +25,23 @@ app.use(express.static(path.join(__dirname, '/../public')));
 	   page navigation routes
 
 *******************************/
-//index
+
+//index page is login screen
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/login.html'));
 });
-app.get('/home', function(req, res) {
-    res.sendFile(path.join(__dirname + '/../public/home.html'));
-});
-//login
+
+//login screen
 app.get('/login', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/login.html'));
 });
 
-//view a list - TODO figure out how to handle query string so that ?list="unique id" brings up the appropriate list
+//home screen
+app.get('/home', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/home.html'));
+});
+
+//view a list
 app.get('/grocerylist', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/listView.html'));
 });
@@ -47,6 +51,10 @@ app.get('/recipes', function(req, res) {
     res.sendFile(path.join(__dirname + '/../public/browseRecipes.html'));
 });
 
+//add recipes
+app.get('/recipes/add', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/addRecipe.html'));
+});
 
 /*******************************
 

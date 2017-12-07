@@ -1,0 +1,93 @@
+body {
+	background-color: #2bb3bd;
+}
+#divStart {
+	position: absolute;
+	left: 50px;
+	top: 10px;
+	height: 100px;
+	width: 75%;
+	border: 1px solid rgb(253, 252, 252);
+	background-color: rgb(20, 78, 236);
+}
+
+#lblGroceryGuruHomeTitle {
+	position: absolute;
+	left: 10px;
+	top: 5px;
+	font-size: 24px;
+	font-family: sans-serif;
+	font-weight: bold;
+	color:#fdfdfd;
+	background-color:#2bb3bd; 
+}
+
+#Search {
+	position: absolute;
+	left: 210px;
+	top: 120px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#Number {
+	position: absolute;
+	left: 320px;
+	top: 120px;
+	width: 150px;
+	height: 30px;
+	font-size: 18px;
+	background: #eff1f1;
+	border: 1px solid #070706;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.searchBtn {
+	position: absolute;
+	left: 500px;
+	top: 120px;
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+	background: #2bb3bd;
+	border: 1px solid #f8f7f6;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#recipes {
+	position: absolute;
+	top: 150px;
+	clear: both;
+	width: 100%;
+	padding: 25px;
+}
+
+#recipes td, #recipes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#recipes tr:hover {
+	background-color: #ddd;
+}
+
+#recipes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(20, 78, 236);
+    color: white;
+}
