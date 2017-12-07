@@ -63,8 +63,9 @@ function newList() {
 	var url = window.location.toString();
     var res = url.split("=");
     var list = res[1];
-	addFriendToList(username, password, FriendName).then(function (list) {
-        populateFriendList(list);
+    
+	addFriendToList(username, password, FriendName).then(function () {
+        return;
     }).catch(function(err) {
         console.log("there was a error");
         console.log("Error: " + err);
