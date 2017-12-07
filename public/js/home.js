@@ -1,5 +1,6 @@
 function create_button(listname) {
     var button = document.createElement("button");
+		button.classList.add('listItems');
     button.innerHTML = listname;
 
     var createA = document.createElement('a');
@@ -63,7 +64,7 @@ function newList() {
 	var url = window.location.toString();
     var res = url.split("=");
     var list = res[1];
-    
+
 	addFriendToList(username, password, FriendName).then(function () {
         return;
     }).catch(function(err) {

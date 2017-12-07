@@ -8,24 +8,34 @@
 	</head>
 	<body>
 		<div id="divEntryAdd">
-			<label id="lblGroceryGuruHomeTitle"><a href=/home style="color: #ffffff;">Grocery Guru Home</a></label>
-			<button type="button" id="btnRecipes" ><a href="/recipes" style="color: #ffffff;"> Recipes </a></button>
-			<input type="text" id="myInput" placeholder="NewList...">
-			<span onclick="newList()" class="addBtn">Add list</span>
-			<input type="text" id="Friend" placeholder="Add to FriendList...">
-			<span onclick="newFriend()" class="friendBtn">Add Friend </span>
-		</div>
-		<ul id="but_lists">
-				<script>
-						create_all_buttons();
-			   </script>
-		</ul>
+			<label id="lblGroceryGuruHomeTitle"><a href=/home style="color: #4B5043;">Grocery Guru Home</a></label>
+			<button type="button" id="btnRecipes" ><a href="/recipes" style="color: #ffffff;">Browse Recipes</a></button>
 
-		<div class="dropdown">
-			<button onclick="myDropList()" class="dropbtn">Friends List</button>
-			<div id="myDropdown" class="dropdown-content">
+			<div id="divListSection">
+				<label id="lblListSectionTitle">Lists</label>
+				<input type="text" id="myInput" placeholder="NewList...">
+				<button onclick="newList()" id="addListBtn">Add list</button>
+				<ul id="but_lists">
+						<script>
+								create_all_buttons();
+					   </script>
+				</ul>
 			</div>
+
+			<div id="divFriendSection">
+				<label id="lblFriendSectionTitle">Friends</label>
+				<input type="text" id="Friend" placeholder="Add to FriendList...">
+				<button onclick="newFriend()" id="friendBtn">Add Friend </button>
+
+				<div class="dropdown">
+					<button onclick="myDropList()" class="dropbtn">Friends List</button>
+					<div id="myDropdown" class="dropdown-content">
+					</div>
+				</div>
+			</div>
+
 		</div>
+
 
 	</body>
 </html>
