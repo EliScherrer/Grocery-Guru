@@ -67,18 +67,18 @@ app.get('/recipesadd', function(req, res) {
 app.post('/users/create', (req, res) => {
 	var body = _.pick(req.body, ['username', 'password']);
 	//add default friends
-	body.friends = [
-		"user1",
-		"user2",
-		"user3",
-		"user4",
-		"user5"
-	]
-	//add default lists
-	body.lists = [
-		"defaultList1",
-		"defaultList2",
-	]
+	// body.friends = [
+	// 	"user1",
+	// 	"user2",
+	// 	"user3",
+	// 	"user4",
+	// 	"user5"
+	// ]
+	// //add default lists
+	// body.lists = [
+	// 	"defaultList1",
+	// 	"defaultList2",
+	// ]
 
 	var user = new User(body);
 
