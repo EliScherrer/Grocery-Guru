@@ -113,10 +113,13 @@ function create_table(list1) {
             }
             else {
 								//if adding an ingredient
-								if (list.items[r-1].genre !== "recipe") {
+					if (list.items[r-1].genre !== "recipe") {
 	                //i++;
 	                var name_i = list.items[r-1].itemName;
-	                var name_l = list.listName;
+                    var name_l = list.listName;
+                    var name_q = list.items[r-1].quantity;
+                    var name_g = list.items[r-1].genre;
+                    var name_a = list.items[r-1].acquired;
 	                if (c == 0) {
 	                    table += '<td>' + list.items[r-1].itemName + '</td>';
 	                }
@@ -139,8 +142,8 @@ function create_table(list1) {
 	                    table += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
 	                }
 	                else if (c == 5) {
-	                    //table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\')">Edit</button></td>';
-	                    table += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
+	                    table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\',\'' + name_q+ '\',\'' + name_g+ '\',\'' + name_a+ '\')">Edit</button></td>';
+	                    //table += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
 	                }
 								}
 								//adding a recipe
