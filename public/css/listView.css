@@ -1,5 +1,5 @@
 body {
-	background-color: #2bb3bd;
+	background-color: #A6D3A0;
 }
 #divStart {
 	position: absolute;
@@ -8,7 +8,7 @@ body {
 	height: 100px;
 	width: 75%;
 	border: 1px solid rgb(253, 252, 252);
-	background-color: rgb(20, 78, 236);
+	background-color: #9BC4BC;
 }
 
 #lblGroceryGuruHomeTitle {
@@ -19,7 +19,7 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	color:#fdfdfd;
-	background-color:#2bb3bd; 
+	background-color:#4B5043; 
 }
 
 #lblListView {
@@ -30,7 +30,7 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	color:#fdfdfd;
-	background-color:#2bb3bd; 
+	background-color:#4B5043; 
 }
 
 #Item {
@@ -85,7 +85,7 @@ body {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #2bb3bd;
+	background: #4B5043;
 	border: 1px solid #f8f7f6;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -100,7 +100,7 @@ body {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #e62525;
+	background: #4B5043;
 	border: 1px solid #f8f7f6;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -115,7 +115,7 @@ body {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #2bb3bd;
+	background: #4B5043;
 	border: 1px solid #f8f7f6;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -143,8 +143,7 @@ body {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #2bb3bd;
-	border: 1px solid #e5a900;
+	background: #4B5043;
 	color: #FFFFFF;
 	font-weight: bold;
 	cursor: pointer;
@@ -179,7 +178,7 @@ body {
 }
 
 .dropbtn {
-    background-color: #2bb3bd;
+    background-color: #4B5043;
 	color: white;
 	font-weight: bold;
     padding: 16px;
@@ -190,7 +189,7 @@ body {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #2bb3bd;
+    background-color: #4B5043;
 }
 
 /* The container <div> - needed to position the dropdown content */
