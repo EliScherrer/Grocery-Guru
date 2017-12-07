@@ -1,5 +1,5 @@
 body {
-	background-color: #2bb3bd;
+	background-color: #A6D3A0;
 }
 #divStart {
 	position: absolute;
@@ -8,7 +8,7 @@ body {
 	height: 100px;
 	width: 75%;
 	border: 1px solid rgb(253, 252, 252);
-	background-color: rgb(20, 78, 236);
+	background-color: #9BC4BC;
 }
 
 #lblGroceryGuruHomeTitle {
@@ -144,7 +144,6 @@ body {
 	height: 30px;
 	font-size: 18px;
 	background: #4B5043;
-	border: 1px solid #e5a900;
 	color: #FFFFFF;
 	font-weight: bold;
 	cursor: pointer;
