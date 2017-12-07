@@ -19,7 +19,7 @@ function create_table(list1) {
     //example of input
     console.log(list1);
     var table = '';
-	var list = list1;
+		var list = list1;
     var rows = list.length + 1;
     var cols = 4;
     var i = -1;
@@ -40,9 +40,9 @@ function create_table(list1) {
                 else if (c == 2) {
                     table += '<th>' + "Ingredients" + '</th>';
                 }
-                else if (c == 3) {
-                    table += '<th>' + "Add?" + '</th>';
-                }
+                // else if (c == 3) {
+                //     table += '<th>' + "Add?" + '</th>';
+                // }
             }
             else {
                 //i++;
@@ -59,10 +59,10 @@ function create_table(list1) {
                     allIngredients = list[r-1].ingredients.toString();
                     table += '<td>' +  allIngredients+ '</td>';
                 }
-                else if (c == 3) {
-                    var kms = "add?";
-                    table += '<td><input type="checkbox" value="checked" />' + kms + '</td>';
-                }
+                // else if (c == 3) {
+                //     var kms = "add?";
+                //     table += '<td><input type="checkbox" value="checked" />' + kms + '</td>';
+                // }
             }
         }
         table += '</tr>';
