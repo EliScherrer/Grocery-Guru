@@ -75,6 +75,44 @@ function change_row () {
 
 }
 
+function change_a (listName, itemName, quantity, genre, acquired) { 
+    
+    if (acquired == "true") {
+        var a = false;
+        var url = window.location.toString();
+        console.log(url);
+        var res = url.split("=");
+        var list = res[1];
+    
+        changeItemInList(list, itemName, quantity, genre, a)
+            .then(function (result) {
+                getTheList(list);
+                location.reload();
+            }).catch(function(err) {
+                console.log("there was a error");
+                console.log("Error: " + err);
+                        return;
+            });
+    }
+    else {
+        var a = true;
+        var url = window.location.toString();
+        console.log(url);
+        var res = url.split("=");
+        var list = res[1];
+    
+        changeItemInList(list, itemName, quantity, genre, a)
+            .then(function (result) {
+                getTheList(list);
+                location.reload();
+            }).catch(function(err) {
+                console.log("there was a error");
+                console.log("Error: " + err);
+                        return;
+            });
+    }
+}
+
 function create_table(list1) {
     //example of input
 		var table = '';
@@ -132,10 +170,11 @@ function create_table(list1) {
 	                else if (c == 3) {
 	                    var kms = "obtained";
 	                    if (list.items[r-1].acquired) {
-	                        table += '<td><input type="checkbox" value="checked" checked /></td>';
+                            table += '<td><input type="checkbox" onclick="change_a(\'' + name_l + '\',\'' + name_i+ '\',\'' + name_q+ '\',\'' + name_g+ '\',\'' + name_a+ '\')" value="checked" checked /></td>';
+                            //table += '<td><input type="checkbox" value="checked" checked /></td>';
 	                    }
 	                    else {
-	                        table += '<td><input type="checkbox" value="checked" /></td>';
+	                        table += '<td><input type="checkbox" onclick="change_a(\'' + name_l + '\',\'' + name_i+ '\',\'' + name_q+ '\',\'' + name_g+ '\',\'' + name_a+ '\')" value="checked"  /></td>';    
 	                    }
 	                }
 	                else if (c == 4) {
@@ -150,7 +189,11 @@ function create_table(list1) {
 								else {
 									//i++;
 	                var name_i = list.items[r-1].itemName;
-	                var name_l = list.listName;
+                    var name_l = list.listName;
+                    var name_q = list.items[r-1].quantity;
+                    var name_g = "recipe";
+                    var name_a = list.items[r-1].acquired;
+                    
 	                if (c == 0) {
 	                    table2 += '<td>' + list.items[r-1].itemName + '</td>';
 	                }
@@ -158,29 +201,20 @@ function create_table(list1) {
 	                    table2 += '<td>' + list.items[r-1].quantity + '</td>';
 	                }
 	                else if (c == 2) {
-										if (list.items[r-1].acquired) {
-												table2 += '<td><input type="checkbox" value="checked" checked /></td>';
-										}
-										else {
-												table2 += '<td><input type="checkbox" value="checked" /></td>';
-										}
+						if (list.items[r-1].acquired) {
+                            table2 += '<td><input type="checkbox" onclick="change_a(\'' + name_l + '\',\'' + name_i+ '\',\'' + name_q+ '\',\'' + name_g+ '\',\'' + name_a+ '\')" value="checked" checked /></td>';
+                            //table += '<td><input type="checkbox" value="checked" checked /></td>';
+	                    }
+	                    else {
+	                        table2 += '<td><input type="checkbox" onclick="change_a(\'' + name_l + '\',\'' + name_i+ '\',\'' + name_q+ '\',\'' + name_g+ '\',\'' + name_a+ '\')" value="checked"  /></td>';    
+	                    }
 	                }
 	                else if (c == 3) {
 	                    var kms = "obtained?";
-											table2 += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
+						table2 += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
 	                }
-	                // else if (c == 4) {
-	                //     table2 += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
-	                // }
-	                // else if (c == 5) {
-	                //     //table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\')">Edit</button></td>';
-	                //     table2 += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
-	                // }
-								}
 
-
-
-
+				}
             }
         }
         table += '</tr>';
