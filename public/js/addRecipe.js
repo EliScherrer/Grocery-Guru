@@ -1,3 +1,5 @@
+var returnedRecipes = [];
+
 function getRecipes() {
     var search = document.getElementById("Search").value;
     var q = document.getElementById("Number").value;
@@ -19,7 +21,8 @@ function create_table(list1) {
     //example of input
     console.log(list1);
     var table = '';
-	var list = list1;
+		var list = list1;
+		returnedRecipes = list;
     var rows = list.length + 1;
     var cols = 4;
     var i = -1;
@@ -56,12 +59,17 @@ function create_table(list1) {
                     table += '<td><a href="' + link + '">' + list[r-1].name + '</a></td>';
                 }
                 else if (c == 2) {
-                    allIngredients = list[r-1].ingredients.toString();
+                    // allIngredients = list[r-1].ingredients.toString();
+										var temp = list[r-1]
+										var allIngredients = ""
+										for (var i = 0; i < temp.ingredients.length; i++) {
+											allIngredients += temp.ingredients[i] + ", ";
+										}
+
                     table += '<td>' +  allIngredients+ '</td>';
                 }
                 else if (c == 3) {
-                    var kms = "add?";
-                    table += '<td><input type="checkbox" value="checked" />' + kms + '</td>';
+                    table += `<td><input type="button" class="addButton" onclick="addRecipeToList(${r})" value="Add To List"></input></td>`;
                 }
             }
         }
@@ -70,4 +78,37 @@ function create_table(list1) {
     var node = document.getElementById("recipes");
     node.innerHTML = table;
 
+}
+
+function addRecipeToList(index) {
+
+	var i = index - 1;
+	recipe = returnedRecipes[i];
+
+	console.log(recipe);
+
+	var itemName = recipe.name
+
+	var ingredients = ""
+	for (var i = 0; i < recipe.ingredients.length; i++) {
+		ingredients += recipe.ingredients[i] + " ";
+	}
+	var quantity = ingredients;
+	console.log(quantity);
+
+	var type = "recipe";
+	var acquired = "false";
+
+	var url = window.location.toString();
+	var res = url.split("=");
+	var list = res[1];
+
+	addItemToList(list, itemName, quantity, type, acquired)
+		.then(function (result) {
+				alert("added")
+		}).catch(function(err) {
+				console.log("there was a error");
+				console.log("Error: " + err);
+				return;
+		});
 }
