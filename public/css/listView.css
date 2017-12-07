@@ -15,7 +15,7 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	color:#fdfdfd;
-	background-color:#4B5043; 
+	background-color:#4B5043;
 	border: 1px solid #f8f7f6;
 }
 
@@ -27,7 +27,7 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	color:#fdfdfd;
-	background-color:#4B5043; 
+	background-color:#4B5043;
 	border: 1px solid #f8f7f6;
 }
 
@@ -155,7 +155,7 @@ body {
 	position: absolute;
 	top: 150px;
 	clear: both;
-	width: 90%;
+	width: 1200px;
 	padding: 25px;
 }
 
@@ -169,6 +169,33 @@ body {
 }
 
 #ingredients th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #9BC4BC;
+    color: white;
+}
+
+#recipes {
+	position: absolute;
+	top: 600px;
+	clear: both;
+	width: 90%;
+	padding: 25px;
+	max-height: 500px;
+	overflow-y: scroll;
+}
+
+#recipes td, #recipes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#recipes tr:hover {
+	background-color: #ddd;
+}
+
+#recipes th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
