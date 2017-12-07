@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var path = require('path');
 const _ = require('lodash');
+var cors = require('cors');
 
 const { User } = require('./models/user');
 const { List } = require('./models/list');
@@ -13,6 +14,7 @@ const { ObjectID } = require('mongodb');
 var app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(bodyParser.urlencoded({
 	extended:true
 }));
