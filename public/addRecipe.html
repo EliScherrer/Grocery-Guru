@@ -6,13 +6,16 @@
 		<script type = "text/javascript" src="./js/functions.js"></script>
     </head>
 
-    <body>
-				<div id="divStart">
-						<label id="lblGroceryGuruHomeTitle"><a href="/home" style="color: #4B5043;">Grocery Guru</a></label>
-						<input type="text" id="Search" placeholder="Recipe Search">
-						<input type="text" id="Number" placeholder="Amount">
-						<button onclick="getRecipes()" id="searchBtn">Search</button>
-				</div>
+		<body>
+        <div id="divStart">
+            <label id="lblGroceryGuruHomeTitle"><a href="/home" style="color: #4B5043;">Grocery Guru</a></label>
+						<div id="divSearch"></div>
+            	<input type="text" id="Search" placeholder="Recipe Search">
+            	<input type="text" id="Number" placeholder="Amount">
+            	<button onclick="getRecipes()" id="searchBtn">Search</button>
+        </div>
+
+				<label id="lblRecipeSectionTitle">Recipes</label>
 				<div id="divTableArea">
         	<div id="divTable">
             <table id="recipes"></table>
