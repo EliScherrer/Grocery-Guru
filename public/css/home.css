@@ -16,8 +16,8 @@
 				top: 10px;
 				height: 100%;
 				width: 90%;
-       			border: 1px solid rgb(253, 252, 252);
-        		background-color: #9BC4BC;
+   			border: 1px solid rgb(253, 252, 252);
+    		background-color: #9BC4BC;
 			}
 
 
@@ -26,7 +26,7 @@
 /*styles for divEntryAdd*/
 			#lblGroceryGuruHomeTitle {
 				position: absolute;
-				left: 340px;
+				left: 420px;
 				top: 10px;
 				font-size: 60px;
 				font-family: sans-serif;
