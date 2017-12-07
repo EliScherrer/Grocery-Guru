@@ -138,11 +138,13 @@ function deleteCurrentList() {
 }
 
 function newFriend() {
-	var FriendName = document.getElementById("Friend").value;
+    username = localStorage.getItem("user");
+	password = localStorage.getItem("pass");
+    var FriendName = document.getElementById("Friend").value;
 	var url = window.location.toString();
     var res = url.split("=");
     var list = res[1];
-	addListToUser(list, FriendName).then(function (list) {
+	addFriendToList(username, password, FriendName).then(function (list) {
         populateFriendList(list);
     }).catch(function(err) {
         console.log("there was a error");
