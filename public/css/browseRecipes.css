@@ -8,7 +8,7 @@ body {
 	height: 100px;
 	width: 75%;
 	border: 1px solid rgb(253, 252, 252);
-	background-color: rgb(20, 78, 236);
+	background-color: #9BC4BC;
 }
 
 #lblGroceryGuruHomeTitle {
@@ -19,7 +19,7 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	color:#fdfdfd;
-	background-color:#2bb3bd; 
+	background-color:#4B5043; 
 }
 
 #Search {
@@ -59,7 +59,7 @@ body {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #2bb3bd;
+	background: #4B5043;
 	border: 1px solid #f8f7f6;
 	color: #FFFFFF;
 	font-weight: bold;
@@ -88,6 +88,6 @@ body {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: rgb(20, 78, 236);
+    background-color: #9BC4BC;
     color: white;
 }
