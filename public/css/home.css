@@ -39,10 +39,10 @@
 
 			#btnRecipes {
         position: absolute;
-        left: 500px;
+        left: 470px;
 				top: 120px;
-        width: 200px;
-        height: 100px;
+        width: 300px;
+        height: 80px;
 				font-size: 30px;
         background: #4B5043;;
         border: 1px solid #f5f5f5;
@@ -149,7 +149,7 @@
 
 			#divFriendSection {
 				position: absolute;
-				left: 850px;
+				left: 890px;
 				top: 140px;
 			}
 
