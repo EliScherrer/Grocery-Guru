@@ -27,7 +27,7 @@ function delete_Item(listName, itemName ) {
         console.log("there was a error");
         console.log("Error: " + err);
     });
-    
+
 }
 
 function create_table(list1) {
@@ -126,15 +126,15 @@ function deleteCurrentList() {
         });
         deleteList(list).then(function (result) {
             window.location.href='./home.html';
-            return;     
+            return;
         }).catch(function(err) {
             console.log("there was a error delUserFromList");
             console.log("Error: " + err);
                     return;
         });
-        
+
     }
-    
+
 }
 
 function newFriend() {
@@ -159,18 +159,18 @@ function add_Friend_To_List(name) {
     console.log(name);
     console.log(list);
     addListToUser(list, name)
-    .then(function (add) {
-        
-        return;
-    }).catch(function(err) {
-        console.log("there was a error");
-        console.log("Error: " + err);
-    });
+	    .then(function (add) {
+
+	        return;
+	    }).catch(function(err) {
+	        console.log("there was a error");
+	        console.log("Error: " + err);
+	    });
 }
 
 function populateFriendList(list1) {
     var list = list1;
-    var len = list.length;    
+    var len = list.length;
     var node = document.getElementById("myDropdown");
     var fin = '';
     while(node.firstChild){
@@ -178,11 +178,11 @@ function populateFriendList(list1) {
     }
     for (var i = 0; i < len; i++) {
         var name = list[i];
-        fin = '<a href="" onclick="add_Friend_To_List(\'' + name + '\')">' + name + '</a>';          
+        fin = '<a href="" onclick="add_Friend_To_List(\'' + name + '\')">' + name + '</a>';
         node.innerHTML += fin;
     }
     console.log(fin);
-    
+
     document.getElementById("myDropdown").classList.toggle("show");
 }
 

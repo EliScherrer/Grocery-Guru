@@ -180,6 +180,7 @@ function addListToUser(listName, username) {
 		fetch(BASE_URL + '/users/lists/add', props)
 			.then(function(response) {
 				if (response.ok) {
+					console.log("worked?");
 					return resolve(true);
 				}
 				else {
@@ -257,7 +258,7 @@ function getFriendsList(username, password) {
 			.then(function(response) {
 				if (response.ok) {
 					response.json().then(function(friends) {
-						console.log(friends);	
+						console.log(friends);
 						return resolve(friends);
 					}).catch(function(err) {
 							console.log("there was a network error");
