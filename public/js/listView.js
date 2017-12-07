@@ -146,9 +146,12 @@ function newFriend() {
 }
 
 function add_Friend_To_List(name) {
-    username = localStorage.getItem("user");
-    password = localStorage.getItem("pass");
-    addFriendToList(username, password, name)
+    var url = window.location.toString();
+    var res = url.split("=");
+    var list = res[1];
+    console.log(name);
+    console.log(list);
+    addListToUser(list, name)
     .then(function (add) {
         
         return;
@@ -169,7 +172,7 @@ function populateFriendList(list1) {
     for (var i = 0; i < len; i++) {
         var name = list[i];
         fin = '<a href="" onclick="add_Friend_To_List(\'' + name + '\')">' + name + '</a>';          
-        node.innerHTML = fin;
+        node.innerHTML += fin;
     }
     console.log(fin);
     
