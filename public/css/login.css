@@ -1,8 +1,8 @@
 body {
-	background-color: #2bb3bd;
+	background-color: #A6D3A0;;
 }
 h2{
-	background-color: rgb(20, 78, 236);
+	background-color: #4B5043;
 	padding: 30px 35px;
 	margin: auto;
 	text-align:center;
@@ -16,7 +16,7 @@ div.container{
 	color: rgb(255, 255, 255);
 }
 div.main{
-	background-color: rgb(20, 78, 236);
+	background-color: #9BC4BC;;
 	width: auto;
 	padding: 10px 50px 25px;
 	border: 2px solid gray;
@@ -66,8 +66,7 @@ center{
 
 #login {
 	font-size: 16px;
-	background: #000000;
-	border: 1px solid #e5a900;
+	background: #4B5043;
 	color: #FFFFFF;
 	font-weight: bold;
 	cursor: pointer;
@@ -83,8 +82,7 @@ center{
 
 #createAccount {
 	font-size: 16px;
-	background: #000000;
-	border: 1px solid #e5a900;
+	background: #4B5043;
 	color: #FFFFFF;
 	font-weight: bold;
 	cursor: pointer;
