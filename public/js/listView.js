@@ -21,12 +21,13 @@ function getTheList() {
 function delete_Item(listName, itemName ) {
     deleteItemFromList(listName, itemName)
     .then(function (result) {
+        location.reload();
         return;
     }).catch(function(err) {
         console.log("there was a error");
         console.log("Error: " + err);
     });
-    location.reload();
+    
 }
 
 function create_table(list1) {
@@ -117,19 +118,23 @@ function deleteCurrentList() {
     username = localStorage.getItem("user");
     if(confirm("Are you sure you want to delete?") == true) {
         delListFromUser(list, username).then(function (result) {
-            deleteList(list).then(function (result) {
-                windows.location = "/home";
-            }).catch(function(err) {
-                console.log("there was a error delUserFromList");
-                console.log("Error: " + err);
-                        return;
-            });
+            return;
         }).catch(function(err) {
             console.log("there was a error delList");
             console.log("Error: " + err);
                     return;
         });
+        deleteList(list).then(function (result) {
+            window.location.href='./home.html';
+            return;     
+        }).catch(function(err) {
+            console.log("there was a error delUserFromList");
+            console.log("Error: " + err);
+                    return;
+        });
+        
     }
+    
 }
 
 function newFriend() {
