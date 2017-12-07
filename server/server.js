@@ -439,9 +439,10 @@ app.post('/lists/item/change', (req, res) => {
 	}
 	//TODO change this next part, it was just copied and pasted
 	else {
-		List.findOneAndUpdate(
-			{ "listName" : body.listName },
-			{ $push: { items: item } },
+		console.log(item.itemName);
+		List.update(
+			{ "listName" : body.listName, "items.itemName" : item.itemName },
+			{ "$set" : { "items.$" : item } },
 			{ new: true },
 			function (err, doc) {
 				if (err) {
