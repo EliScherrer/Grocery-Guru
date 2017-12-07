@@ -6,6 +6,16 @@ function body_onLoad() {
 	//create_table();
 }
 
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 function goToAddRecipe() {
 	var url = window.location.toString();
 	var res = url.split("=");
@@ -40,12 +50,16 @@ function delete_Item(listName, itemName) {
 
 }
 
+function edit_row (listName, itemName, quantity, genre, acquired) {
+    changeItemInList(listName, itemName, quantity, genre, acquired)
+}
+
 function create_table(list1) {
     //example of input
 	var table = '';
 	var list = list1;
     var rows = list.items.length + 1;
-    var cols = 5;
+    var cols = 6;
     var i = -1;
     for (var r = 0; r < rows; r++) {
         table += '<tr>';
@@ -66,6 +80,9 @@ function create_table(list1) {
                 }
                 else if (c == 4) {
                     table += '<th>' + "Delete?" + '</th>';
+                }
+                else if (c == 5) {
+                    table += '<th>' + "Edit?" + '</th>';
                 }
             }
             else {
@@ -92,6 +109,10 @@ function create_table(list1) {
                 }
                 else if (c == 4) {
                     table += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
+                }
+                else if (c == 5) {
+                    //table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\')">Edit</button></td>';
+                    table += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
                 }
             }
         }
