@@ -57,7 +57,7 @@ function change_row () {
     var genre = document.getElementById("c_type").value;
     var acquired = document.getElementById("c_acquired").value;
 
-    location.reload();
+    //location.reload();
     var url = window.location.toString();
     console.log(url);
     var res = url.split("=");
@@ -65,8 +65,8 @@ function change_row () {
 
     changeItemInList(list, itemName, quantity, genre, acquired)
         .then(function (result) {
+            getTheList(list);
             location.reload();
-            return;
         }).catch(function(err) {
             console.log("there was a error");
             console.log("Error: " + err);
