@@ -105,48 +105,21 @@ a:link {
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
-	background: #4B5043;
+	background: red;
 	border: 1px solid #f8f7f6;
 	color: #FFFFFF;
 	font-weight: bold;
 	cursor: pointer;
 	border-radius: 5px;
+	text-align: center;
+	vertical-align: middle;
 }
 
-.friendBtn {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	width: 100px;
-	height: 30px;
-	font-size: 18px;
-	background: #4B5043;
-	border: 1px solid #f8f7f6;
-	color: #FFFFFF;
-	font-weight: bold;
-	cursor: pointer;
-	border-radius: 5px;
-}
-
-#Friend {
-	position: absolute;
-	right: 125px;
-	top: 10px;
-	width: 200px;
-	height: 30px;
-	font-size: 18px;
-	background: #eff1f1;
-	border: 1px solid #070706;
-	color: rgb(0, 0, 0);
-	font-weight: bold;
-	cursor: pointer;
-	border-radius: 5px;
-}
 
 #btnRecipes {
 	position: absolute;
 	right: 10px;
-	bottom: 10px;
+	top: 10px;
 	width: 200px;
 	height: 50px;
 	font-size: 18px;
@@ -160,7 +133,7 @@ a:link {
 
 #ingredients {
 	position: absolute;
-	top: 150px;
+	top: 160px;
 	clear: both;
 	width: 1200px;
 	padding: 25px;
@@ -233,8 +206,8 @@ a:link {
     position: absolute;
 	display: inline-block;
 	border: 1px solid #f8f7f6;
-	top: 70px;
-	right: 25%;
+	top: 80px;
+	right: 6%;
 }
 
 /* Dropdown Content (Hidden by Default) */

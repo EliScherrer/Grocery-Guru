@@ -10,18 +10,16 @@
     <div id="divStart">
         <label id="lblGroceryGuruHomeTitle"><a href="/home" style="color: #4B5043;">Grocery Guru</a></label>
         <label id="lblListView">List View</a></label>
-        <button type="button" id="btnRecipes" onclick="goToAddRecipe()">Recipes</button>
+        <button type="button" id="btnRecipes" onclick="goToAddRecipe()">Add Recipes</button>
         <input type="text" id="Item" placeholder="NewItem...">
         <input type="text" id="Quantity" placeholder="Quantity...">
         <input type="text" id="Type" placeholder="Type...">
         <button onclick="newItem()" class="addBtn">Add Item</button>
-        <input type="text" id="Friend" placeholder="Add to FriendList...">
-        <span onclick="newFriend()" class="friendBtn">Add Friend </span>
         <span onclick="deleteCurrentList()" class="delBtn">Delete list</span>
     </div>
 
 		<div class="dropdown">
-        <button onclick="myDropList()" class="dropbtn">Add Friend to List</button>
+        <button onclick="myDropList()" class="dropbtn">Invite Friend to Edit List</button>
         <div id="myDropdown" class="dropdown-content">
         </div>
     </div>
