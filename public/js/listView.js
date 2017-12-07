@@ -6,15 +6,7 @@ function body_onLoad() {
 	//create_table();
 }
 
-// Get the modal
-var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 
 function goToAddRecipe() {
 	var url = window.location.toString();
@@ -51,7 +43,34 @@ function delete_Item(listName, itemName) {
 }
 
 function edit_row (listName, itemName, quantity, genre, acquired) {
-    changeItemInList(listName, itemName, quantity, genre, acquired)
+    console.log("here");
+	document.getElementById("c_item").value = itemName;
+	document.getElementById("c_quantity").value = quantity;
+	document.getElementById("c_type").value = genre;
+    document.getElementById("c_acquired").value = acquired;
+    document.getElementById('id01').style.display='block';
+}
+
+function change_row () {
+    var itemName = document.getElementById("c_item").value;
+	var quantity = document.getElementById("c_quantity").value;
+    var genre = document.getElementById("c_type").value;
+    var acquired = document.getElementById("c_acquired").value;
+    
+    var url = window.location.toString();
+    console.log(url);
+    var res = url.split("=");
+    var list = res[1];
+
+    changeItemInList(list, itemName, quantity, genre, acquired)
+        .then(function (result) {
+            return getTheList(list);
+        }).catch(function(err) {
+            console.log("there was a error");
+            console.log("Error: " + err);
+                    return;
+        });
+    
 }
 
 function create_table(list1) {
@@ -89,6 +108,9 @@ function create_table(list1) {
                 //i++;
                 var name_i = list.items[r-1].itemName;
                 var name_l = list.listName;
+                var name_q = list.items[r-1].quantity;
+                var name_g = list.items[r-1].genre;
+                var name_a = list.items[r-1].acquired; 
                 if (c == 0) {
                     table += '<td>' + list.items[r-1].itemName + '</td>';
                 }
@@ -111,8 +133,8 @@ function create_table(list1) {
                     table += '<td><button type="button" onclick="delete_Item(\'' + name_l + '\',\'' + name_i+ '\')">Delete</button></td>';
                 }
                 else if (c == 5) {
-                    //table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i+ '\')">Edit</button></td>';
-                    table += '<td><button onclick="document.getElementById("id01").style.display="block"" style="width:auto;">Sign Up</button></td>';
+                    table += '<td><button type="button" onclick="edit_row(\'' + name_l + '\',\'' + name_i + '\',\'' + name_q + '\',\'' + name_g + '\',\'' + name_a + '\')">Edit</button></td>';
+                    //table += '<td><button onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;">Edit</button></td>';
                 }
             }
         }
