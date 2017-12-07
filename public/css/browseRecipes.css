@@ -1,32 +1,38 @@
 body {
 	background-color: #A6D3A0;;
 }
+
+a:link {
+		text-decoration: none;
+}
+
 #divStart {
 	position: absolute;
-	left: 50px;
+	left: 70px;
 	top: 10px;
-	height: 100px;
-	width: 75%;
+	height: 130px;
+	width: 90%;
 	border: 1px solid rgb(253, 252, 252);
 	background-color: #9BC4BC;
 }
 
 #lblGroceryGuruHomeTitle {
 	position: absolute;
-	left: 40%;
-	top: 2%;
-	font-size: 24px;
+	left: 480px;
+	top: 10px;
+	font-size: 60px;
 	font-family: sans-serif;
 	font-weight: bold;
-	color:#fdfdfd;
-	background-color:#4B5043; 
+	/*color: #fdfdfd;*/
+	color:: #4B5043;
+	/*background-color:#4B5043;;*/
 }
 
 #Search {
 	position: absolute;
-	left: 30%;
-	top: 100%;
-	width: 100px;
+	left: 50px;
+	top: 100px;
+	width: 200px;
 	height: 30px;
 	font-size: 18px;
 	background: #eff1f1;
@@ -39,9 +45,9 @@ body {
 
 #Number {
 	position: absolute;
-	left: 40%;
-	top: 100%;
-	width: 170px;
+	left: 260px;
+	top: 90px;
+	width: 80px;
 	height: 30px;
 	font-size: 18px;
 	background: #eff1f1;
@@ -52,10 +58,10 @@ body {
 	border-radius: 5px;
 }
 
-.searchBtn {
+#searchBtn {
 	position: absolute;
-	left: 55%;
-	top: 100%;
+	left: 350px;
+	top: 90px;
 	width: 100px;
 	height: 30px;
 	font-size: 18px;
