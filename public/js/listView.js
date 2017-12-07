@@ -178,7 +178,7 @@ function populateFriendList(list1) {
     }
     for (var i = 0; i < len; i++) {
         var name = list[i];
-        fin = '<a href="" onclick="add_Friend_To_List(\'' + name + '\')">' + name + '</a>';
+        fin = '<a onclick="add_Friend_To_List(\'' + name + '\')">' + name + '</a>';
         node.innerHTML += fin;
     }
     console.log(fin);
